@@ -4,18 +4,18 @@
     "url": "https://github.com/pizzafox/maroon/issues"
   },
   "dependencies": {
-    "koa": "^2.5.3",
-    "koa-body": "^4.0.4",
-    "koa-logger": "^3.2.0",
-    "koa-router": "^7.4.0",
-    "signale": "^1.3.0",
-    "simple-youtube-api": "^5.0.2",
-    "ytdl-core": "^0.26.0"
+    "koa": "2.5.3",
+    "koa-body": "4.0.4",
+    "koa-logger": "3.2.0",
+    "koa-router": "7.4.0",
+    "signale": "1.3.0",
+    "simple-youtube-api": "5.0.2",
+    "ytdl-core": "0.26.0"
   },
   "description": "A Koa powered web app for downloading YouTube music videos",
   "devDependencies": {
-    "eslint": "^5.6.0",
-    "eslint-config-amber": "^1.1.0"
+    "eslint": "5.6.0",
+    "eslint-config-amber": "1.1.0"
   },
   "homepage": "https://github.com/pizzafox/maroon#readme",
   "keywords": [
