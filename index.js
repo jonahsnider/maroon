@@ -1,4 +1,5 @@
-require('sqreen');
+if (process.env.SQREEN_TOKEN) require('sqreen');
+
 const signale = require('signale');
 const getID = require('./util/getID');
 const ytdl = require('ytdl-core');
