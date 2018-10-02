@@ -1,0 +1,21 @@
+.half-width {
+  width: 50vh;
+}
+
+div.small-padding {
+  padding: 1em
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+body.dark-theme {
+  background-color: #212121
+}

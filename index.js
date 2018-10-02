@@ -1,38 +1,78 @@
+require('sqreen');
 const signale = require('signale');
 const getID = require('./util/getID');
-const downloadVideo = require('./util/downloadVideo');
+const ytdl = require('ytdl-core');
 const searchVideo = require('./util/searchVideo');
-const logger = require('koa-logger');
-const koaBody = require('koa-body');
-const Koa = require('koa');
-const Router = require('koa-router');
-const app = new Koa();
-const router = new Router();
+const path = require('path');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const ms = require('ms');
+const RateLimit = require('express-rate-limit');
+const express = require('express');
+const app = express();
+const { renderFile } = require('ejs');
 
 signale.start('maroon started');
 
-router
-  .get('/', ctx => {
-    ctx.body = 'henlo fremd';
+const limiter = new RateLimit({
+  windowMs: ms('5 minutes'),
+  max: 100,
+  delayMs: 0
+});
+
+app.use(morgan('dev'));
+app.use(limiter);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
+app.engine('html', renderFile);
+app.set('view engine', 'html');
+
+
+app
+  .get('/', (req, res) => {
+    res.render('index.ejs');
   })
-  .post('/api/download', koaBody(), async ctx => {
-    const { query } = ctx.request.body;
+  .post('/', async (req, res) => {
+    const { query } = req.body;
     if (!query) {
-      ctx.throw(400, 'videoResolvable is required');
+      res.render('error.ejs', { error: 'query was missing' });
+      res.status(400);
+      return res.end();
     }
 
-    if (getID(query)) {
-      // If a URL or ID was passed in
-      ctx.body = downloadVideo(query);
+    const options = {
+      quality: 'highestaudio',
+      filter: 'audioonly'
+    };
+
+    let videoID;
+    if (query && getID(query)) {
+      videoID = getID(query);
     } else {
       // If a search term was passed in
-      const ytVideo = await searchVideo(query);
-      if (!ytVideo) ctx.throw(204, 'no video found');
-      ctx.body = downloadVideo(ytVideo.id);
+      videoID = (await searchVideo(query)).id;
+      if (!videoID) {
+        res.render('noVideos.ejs');
+        res.status(204);
+        res.send('no video found');
+        return res.end();
+      }
     }
+
+    res.attachment('audio.mp3');
+
+    return ytdl(videoID, options).pipe(res);
   });
 
-app.use(logger());
-app.use(router.routes());
+app.use((req, res) => {
+  if (req.accepts('html')) {
+    res.render('404.ejs');
+    res.status(404);
+    res.end();
+  }
+});
 
-if (!module.parent) app.listen(3000);
+app.listen(3000);

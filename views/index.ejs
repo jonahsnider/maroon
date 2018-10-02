@@ -1,0 +1,22 @@
+<%- include('blocks/header') %>
+
+<div class="container">
+  <h1>maroon</h1>
+
+  <div>
+    <form action="http://127.0.0.1:3000/" method="post">
+      <div class="row"> 
+        <div class="input-field col s6 offset-s3">
+          <input name="query" id="query" type="text" class="validate white-text" required>
+          <label for="query">YouTube video search, ID, or URL</label>
+        </div>
+      </div>
+
+      <button class="btn waves-effect waves-light btn-large">Download
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+  </div>
+</div>
+
+<%- include('blocks/footer') %>
