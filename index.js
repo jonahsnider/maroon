@@ -15,6 +15,8 @@ const { renderFile } = require('ejs');
 
 signale.start('maroon started');
 
+if (!process.env.YOUTUBE_API_KEY) signale.warn('No YouTube API key provided, search will be disabled');
+
 const limiter = new RateLimit({
   windowMs: ms('5 minutes'),
   max: 100,
@@ -34,7 +36,8 @@ app.set('view engine', 'html');
 
 app
   .get('/', (req, res) => {
-    res.render('index.ejs');
+    res.render('index.ejs', { search: !!process.env.YOUTUBE_API_KEY });
+  })
   })
   .post('/', async (req, res) => {
     const { query } = req.body;
