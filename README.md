@@ -1,4 +1,6 @@
-# maroon <img src="./public/img/logo.png" width="25%" align="right">
+<img src="./public/img/logo.png" width="25%" align="right">
+
+# maroon
 
 [![Realtime application protection](https://s3-eu-west-1.amazonaws.com/sqreen-assets/badges/20171107/sqreen-light-badge.svg)](https://www.sqreen.io/?utm_source=badge) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/pizzafox/maroon/tree/master)
 
