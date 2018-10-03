@@ -40,9 +40,7 @@ app.engine('html', renderFile);
 app.set('view engine', 'html');
 
 const renderTemplate = (res, template, data = {}) => {
-  const baseData = {
-    hostname: process.env.DOCKER_CLUSTER ? require('os').hostname() : null
-  };
+  const baseData = {};
   res.render(template, Object.assign(baseData, data));
 };
 
