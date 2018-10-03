@@ -14,6 +14,7 @@ const youtube = new YouTube(process.env.YOUTUBE_API_KEY);
 const express = require('express');
 const app = express();
 const { renderFile } = require('ejs');
+const packageJSON = require('./package.json');
 
 signale.start('maroon started');
 
@@ -40,7 +41,12 @@ app.engine('html', renderFile);
 app.set('view engine', 'html');
 
 const renderTemplate = (res, template, data = {}) => {
-  const baseData = {};
+  const baseData = {
+    siteData: {
+      url: process.env.URL ? process.env.URL : '',
+      description: packageJSON.description
+    }
+  };
   res.render(template, Object.assign(baseData, data));
 };
 
