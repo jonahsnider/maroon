@@ -9,6 +9,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const ms = require('ms');
 const RateLimit = require('express-rate-limit');
+const YouTube = require('simple-youtube-api');
+const youtube = new YouTube(process.env.YOUTUBE_API_KEY);
 const express = require('express');
 const app = express();
 const { renderFile } = require('ejs');
@@ -53,20 +55,26 @@ app
     };
 
     let videoID;
-    if (query && getID(query)) {
+    let ytVideo;
+
+    if (getID(query)) {
+      // If an ID or URL was passed in
       videoID = getID(query);
-    } else {
+      ytVideo = await youtube.getVideoByID(videoID);
+    } else if (process.env.YOUTUBE_API_KEY) {
       // If a search term was passed in
-      videoID = (await searchVideo(query)).id;
-      if (!videoID) {
-        res.render('noVideos.ejs');
-        res.status(204);
-        res.send('no video found');
-        return res.end();
-      }
+      ytVideo = await searchVideo(query);
+      videoID = ytVideo.id;
     }
 
-    res.attachment('audio.mp3');
+    if (!videoID) {
+      res.render('noVideos.ejs');
+      res.status(204);
+      res.send('no video found');
+      return res.end();
+    }
+
+    res.attachment(`${ytVideo.title}.mp3`);
 
     return ytdl(videoID, options).pipe(res);
   });
