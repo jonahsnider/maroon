@@ -41,3 +41,5 @@ Maroon is an Express powered web app for downloading YouTube music videos.
 3. Install dependencies
     - `yarn`
 4. Configure environment variables
+5. Start application
+    - `yarn start`
