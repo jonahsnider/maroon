@@ -47,6 +47,9 @@ app
   .get('/welcome', (req, res) => {
     res.render('welcome.ejs');
   })
+  .get('/favicon.ico', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'img', 'favicon.ico'));
+  })
   .post('/', async (req, res) => {
     const { query } = req.body;
     if (!query) {
