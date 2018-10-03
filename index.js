@@ -52,7 +52,9 @@ const renderTemplate = (res, template, data = {}) => {
 
 app
   .get('/', (req, res) => {
-    renderTemplate(res, 'index.ejs', { search: !!process.env.YOUTUBE_API_KEY });
+    renderTemplate(res, 'index.ejs', {
+      search: !!process.env.YOUTUBE_API_KEY
+    });
   })
   .get('/welcome', (req, res) => {
     renderTemplate(res, 'welcome.ejs');
@@ -61,16 +63,37 @@ app
     res.sendFile(path.join(__dirname, 'public', 'img', 'favicon.ico'));
   })
   .post('/', async (req, res) => {
-    const { query } = req.body;
+    const { query, filter } = req.body;
+
+    signale.debug('req.body', req.body);
+
     if (!query) {
-      renderTemplate(res, 'error.ejs', { error: 'query was missing' });
+      renderTemplate(res, 'error.ejs', {
+        error: 'query was missing'
+      });
+      res.status(400);
+      return res.end();
+    }
+
+    if (!filter) {
+      renderTemplate(res, 'error.ejs', {
+        error: 'filter type was missing'
+      });
+      res.status(400);
+      return res.end();
+    }
+
+    if (!['audioonly', 'audioandvideo'].includes(filter)) {
+      renderTemplate(res, 'error.ejs', {
+        error: 'filter type was invalid value'
+      });
       res.status(400);
       return res.end();
     }
 
     const options = {
-      quality: 'highestaudio',
-      filter: 'audioonly'
+      quality: filter === 'audioonly' ? 'highestaudio' : 'highest',
+      filter
     };
 
     let videoID;
@@ -93,7 +116,7 @@ app
       return res.end();
     }
 
-    res.attachment(`${ytVideo.title}.mp3`);
+    res.attachment(`${ytVideo.title}.${filter === 'audioonly' ? 'mp3' : 'mp4'}`);
 
     return ytdl(videoID, options).pipe(res);
   });

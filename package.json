@@ -15,7 +15,7 @@
     "sqreen": "1.25.2",
     "ytdl-core": "0.26.0"
   },
-  "description": "An Express powered web app for downloading YouTube music videos",
+  "description": "An Express powered web app for downloading YouTube videos",
   "devDependencies": {
     "eslint": "5.6.0",
     "eslint-config-amber": "1.1.0"
@@ -40,5 +40,5 @@
     "lint": "eslint .",
     "start": "node index.js"
   },
-  "version": "1.5.4"
+  "version": "1.6.0"
 }
