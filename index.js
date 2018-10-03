@@ -28,8 +28,7 @@ process.on('unhandledRejection', (reason, p) => {
 
 const limiter = new RateLimit({
   windowMs: ms('5 minutes'),
-  max: 100,
-  delayMs: 0
+  max: 250
 });
 
 app.use(compression());
@@ -75,11 +74,11 @@ app
   .get('/welcome', (req, res) => {
     renderTemplate(res, 'welcome.ejs');
   })
-  .get('/keybase.txt', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'keybase.txt'));
-  })
   .get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'img', 'favicon.ico'));
+  })
+  .get('/keybase.txt', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'keybase.txt'));
   })
   .post('/', async (req, res) => {
     const { query, filter } = req.body;
