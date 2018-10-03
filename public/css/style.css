@@ -16,6 +16,11 @@ main {
   flex: 1 0 auto;
 }
 
-body.dark-theme {
-  background-color: #212121
+div.input-field input[type=text]:focus + label {
+  color: #ef2424;
+}
+
+div.input-field input[type=text]:focus {
+  border-bottom: 1px solid #ef2424;
+  box-shadow: 0 1px 0 0 #ef2424;
 }
