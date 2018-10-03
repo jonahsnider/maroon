@@ -43,7 +43,7 @@ app.set('view engine', 'html');
 const renderTemplate = (res, template, data = {}) => {
   const baseData = {
     siteData: {
-      url: process.env.URL ? process.env.URL : '',
+      url: process.env.URL,
       description: packageJSON.description
     }
   };
