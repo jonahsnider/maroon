@@ -39,13 +39,19 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.engine('html', renderFile);
 app.set('view engine', 'html');
 
+const renderTemplate = (res, template, data = {}) => {
+  const baseData = {
+    hostname: process.env.DOCKER_CLUSTER ? require('os').hostname() : null
+  };
+  res.render(template, Object.assign(baseData, data));
+};
 
 app
   .get('/', (req, res) => {
-    res.render('index.ejs', { search: !!process.env.YOUTUBE_API_KEY });
+    renderTemplate('index.ejs', { search: !!process.env.YOUTUBE_API_KEY });
   })
   .get('/welcome', (req, res) => {
-    res.render('welcome.ejs');
+    renderTemplate('welcome.ejs');
   })
   .get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'img', 'favicon.ico'));
@@ -53,7 +59,7 @@ app
   .post('/', async (req, res) => {
     const { query } = req.body;
     if (!query) {
-      res.render('error.ejs', { error: 'query was missing' });
+      renderTemplate('error.ejs', { error: 'query was missing' });
       res.status(400);
       return res.end();
     }
@@ -77,7 +83,7 @@ app
     }
 
     if (!videoID) {
-      res.render('noVideos.ejs');
+      renderTemplate('noVideos.ejs');
       res.status(204);
       res.send('no video found');
       return res.end();
@@ -90,7 +96,7 @@ app
 
 app.use((req, res) => {
   if (req.accepts('html')) {
-    res.render('404.ejs');
+    renderTemplate('404.ejs');
     res.status(404);
     res.end();
   }
