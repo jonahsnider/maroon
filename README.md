@@ -12,12 +12,15 @@ Maroon is an Express powered web app for downloading YouTube music videos.
 
 ### Environment variables
 
-| Key               | Description                                             | Optional | Default |
-|-------------------|---------------------------------------------------------|----------|---------|
-| `PORT`            | Port to listen on                                       | Yes      | 3000    |
-| `SQREEN_TOKEN`    | Token to use for protecting the application with Sqreen | Yes      |         |
-| `YOUTUBE_API_KEY` | YouTube Data API v3 key used for searching for videos   | Yes      |         |
-| `URL`             | URL of the instance                                     | No       |         |
+All environment variables are optional, but you should provide a YouTube Data API v3 key and the site URL to utilize the most features.
+
+| Key               | Description                                                                     | Optional | Default |
+|-------------------|---------------------------------------------------------------------------------|----------|---------|
+| `NODE_ENV`        | Environment the application is running in which picks which type of logs to use | Yes      |         |
+| `PORT`            | Port to listen on                                                               | Yes      | 3000    |
+| `SQREEN_TOKEN`    | Token to use for protecting the application with Sqreen                         | Yes      |         |
+| `YOUTUBE_API_KEY` | YouTube Data API v3 key used for searching for videos                           | Yes      |         |
+| `URL`             | URL of the instance                                                             | Yes      |         |
 
 ### Heroku
 
@@ -29,7 +32,7 @@ Maroon is an Express powered web app for downloading YouTube music videos.
     - [Docker Compose](https://docs.docker.com/compose/install/)
 2. Download the `docker-compose.yml` example file
     - `wget https://raw.githubusercontent.com/pizzafox/maroon/master/docker-compose.yml.example -O docker-compose.yml`
-3. Add in environment variables (most are optional)
+3. Add in environment variables (all are optional)
 4. Compose up
     - `docker-compose up`
 
@@ -42,6 +45,6 @@ Maroon is an Express powered web app for downloading YouTube music videos.
     - `git clone https://github.com/pizzafox/maroon.git`
 3. Install dependencies
     - `yarn`
-4. Configure environment variables
+4. Configure environment variables (all are optional)
 5. Start application
     - `yarn start`
