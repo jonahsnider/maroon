@@ -44,6 +44,8 @@ app
   .get('/', (req, res) => {
     res.render('index.ejs', { search: !!process.env.YOUTUBE_API_KEY });
   })
+  .get('/welcome', (req, res) => {
+    res.render('welcome.ejs');
   })
   .post('/', async (req, res) => {
     const { query } = req.body;
