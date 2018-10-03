@@ -48,10 +48,10 @@ const renderTemplate = (res, template, data = {}) => {
 
 app
   .get('/', (req, res) => {
-    renderTemplate('index.ejs', { search: !!process.env.YOUTUBE_API_KEY });
+    renderTemplate(res, 'index.ejs', { search: !!process.env.YOUTUBE_API_KEY });
   })
   .get('/welcome', (req, res) => {
-    renderTemplate('welcome.ejs');
+    renderTemplate(res, 'welcome.ejs');
   })
   .get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'img', 'favicon.ico'));
@@ -59,7 +59,7 @@ app
   .post('/', async (req, res) => {
     const { query } = req.body;
     if (!query) {
-      renderTemplate('error.ejs', { error: 'query was missing' });
+      renderTemplate(res, 'error.ejs', { error: 'query was missing' });
       res.status(400);
       return res.end();
     }
@@ -83,7 +83,7 @@ app
     }
 
     if (!videoID) {
-      renderTemplate('noVideos.ejs');
+      renderTemplate(res, 'noVideos.ejs');
       res.status(204);
       res.send('no video found');
       return res.end();
@@ -96,7 +96,7 @@ app
 
 app.use((req, res) => {
   if (req.accepts('html')) {
-    renderTemplate('404.ejs');
+    renderTemplate(res, '404.ejs');
     res.status(404);
     res.end();
   }
