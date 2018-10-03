@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "body-parser": "1.18.3",
+    "compression": "1.7.3",
     "ejs": "2.6.1",
     "express": "4.16.3",
     "express-rate-limit": "3.2.0",
@@ -40,5 +41,5 @@
     "lint": "eslint .",
     "start": "node index.js"
   },
-  "version": "1.6.0"
+  "version": "1.6.1"
 }

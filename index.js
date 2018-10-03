@@ -15,6 +15,7 @@ const express = require('express');
 const app = express();
 const { renderFile } = require('ejs');
 const packageJSON = require('./package.json');
+const compression = require('compression');
 
 signale.start('maroon started');
 
@@ -30,6 +31,7 @@ const limiter = new RateLimit({
   delayMs: 0
 });
 
+app.use(compression());
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev'));
 app.use(limiter);
 app.use(bodyParser.urlencoded({ extended: true }));
