@@ -27,7 +27,7 @@ Maroon is an Express powered web app for downloading YouTube music videos.
     - [Docker Compose](https://docs.docker.com/compose/install/)
 2. Download the `docker-compose.yml` example file
     - `wget https://raw.githubusercontent.com/pizzafox/maroon/master/docker-compose.yml.example -O docker-compose.yml`
-3. Add in environment variables (optional)
+3. Add in environment variables (most are optional)
 4. Compose up
     - `docker-compose up`
 
