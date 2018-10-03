@@ -17,10 +17,11 @@ RUN yarn
 COPY . .
 
 # Initialize environment variables
-ENV NODE_ENV=
+ENV NODE_ENV=production
 ENV SQREEN_TOKEN=
 ENV YOUTUBE_API_KEY=
 ENV PORT=3000
+ENV URL=
 
 EXPOSE 3000
 

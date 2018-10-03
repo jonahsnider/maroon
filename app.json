@@ -15,6 +15,9 @@
       "description": "Token to use for protecting the application with Sqreen",
       "required": false
     },
+    "URL": {
+      "description": "URL of the instance"
+    },
     "YOUTUBE_API_KEY": {
       "description": "YouTube Data API v3 key used for searching for videos",
       "required": false

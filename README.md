@@ -15,6 +15,7 @@ Maroon is an Express powered web app for downloading YouTube music videos.
 | `PORT`            | Port to listen on                                       | Yes      | 3000    |
 | `SQREEN_TOKEN`    | Token to use for protecting the application with Sqreen | Yes      |         |
 | `YOUTUBE_API_KEY` | YouTube Data API v3 key used for searching for videos   | Yes      |         |
+| `URL`             | URL of the instance                                     | No       |         |
 
 ### Heroku
 
