@@ -35,12 +35,15 @@ const limiter = new RateLimit({
 app.use(compression());
 
 if (process.env.SQREEN_TOKEN) {
+  signale.info('Using Sqreen');
+
   app.use(helmet({
     frameguard: false,
     noSniff: false,
     xssFilter: false
   }));
 } else {
+  signale.info('Continuing without using Sqreen');
   app.use(helmet());
 }
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev'));
