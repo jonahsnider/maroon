@@ -9,6 +9,7 @@
     "ejs": "2.6.1",
     "express": "4.16.3",
     "express-rate-limit": "3.2.0",
+    "helmet": "^3.13.0",
     "morgan": "1.9.1",
     "ms": "2.1.1",
     "signale": "1.3.0",
@@ -41,5 +42,5 @@
     "lint": "eslint .",
     "start": "node index.js"
   },
-  "version": "1.6.1"
+  "version": "1.6.2"
 }

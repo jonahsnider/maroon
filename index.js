@@ -16,6 +16,7 @@ const app = express();
 const { renderFile } = require('ejs');
 const packageJSON = require('./package.json');
 const compression = require('compression');
+const helmet = require('helmet');
 
 signale.start('maroon started');
 
@@ -32,6 +33,16 @@ const limiter = new RateLimit({
 });
 
 app.use(compression());
+
+if (process.env.SQREEN_TOKEN) {
+  app.use(helmet({
+    frameguard: false,
+    noSniff: false,
+    xssFilter: false
+  }));
+} else {
+  app.use(helmet());
+}
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev'));
 app.use(limiter);
 app.use(bodyParser.urlencoded({ extended: true }));
