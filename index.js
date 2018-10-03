@@ -75,6 +75,9 @@ app
   .get('/welcome', (req, res) => {
     renderTemplate(res, 'welcome.ejs');
   })
+  .get('/keybase.txt', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'keybase.txt'));
+  })
   .get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'img', 'favicon.ico'));
   })
