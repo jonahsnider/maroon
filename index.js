@@ -19,6 +19,10 @@ signale.start('maroon started');
 
 if (!process.env.YOUTUBE_API_KEY) signale.warn('No YouTube API key provided, search will be disabled');
 
+process.on('unhandledRejection', (reason, p) => {
+  signale.error('Unhandled Rejection at: Promise', p, 'reason:', reason);
+});
+
 const limiter = new RateLimit({
   windowMs: ms('5 minutes'),
   max: 100,
