@@ -85,8 +85,6 @@ app
   .post('/', async (req, res) => {
     const { query, filter, quality } = req.body;
 
-    signale.debug('req.body', req.body);
-
     if (!query) {
       renderTemplate(res, 'error.ejs', {
         error: 'query was missing'
@@ -142,8 +140,6 @@ app
       options.quality = 'lowest';
     }
 
-    signale.debug(`options.quality for ${filter} at ${quality} quality:`, options.quality);
-
     let videoID;
     let ytVideo;
 
@@ -170,7 +166,6 @@ app
     stream.on('error', error => {
       signale.error('Error occured while streaming video', error);
       res.status(502);
-      signale.debug('finished rendering');
     });
 
     stream.pipe(res);
