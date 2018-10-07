@@ -1,31 +1,55 @@
 <%- include('blocks/header') %>
 
 <div class="container">
-  <h1>maroon</h1>
+  <h1 class="center-align">maroon</h1>
 
   <div>
     <form action="/" method="post">
       <div class="row">
-        <div class="input-field col s6 offset-s3">
-          <input name="query" id="query" type="text" class="validate" required>
+        <div class="input-field col s12 m6 offset-m3">
+          <input autofocus name="query" id="query" type="text" class="validate" required>
           <label for="query">YouTube
             <%= search ? 'video search, ' : ''%>ID, or URL</label>
         </div>
       </div>
+
       <div class="row">
-        <div class="input-field col s6 offset-s3">
-          <select name="filter" required>
-            <option value="" disabled selected>Choose a download type</option>
-            <option value="audioonly">Audio only</option>
-            <option value="audioandvideo">Audio and video</option>
-          </select>
-          <label>Download type</label>
+        <div class="col s12 m2 offset-m4">
+          <h5>Download type</h5>
+          <p>
+            <label>
+              <input class="with-gap" value="audioandvideo" name="filter" type="radio" checked />
+              <span>Audio and video</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input class="with-gap" value="audioonly" name="filter" type="radio" />
+              <span>Audio only</span>
+            </label>
+          </p>
+        </div>
+        <div class="col s12 m2">
+          <h5>Quality</h5>
+          <p>
+            <label>
+              <input class="with-gap" value="highest" name="quality" type="radio" checked />
+              <span>Highest</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input class="with-gap" value="lowest" name="quality" type="radio" />
+              <span>Lowest</span>
+            </label>
+          </p>
         </div>
       </div>
-
-      <button class="btn waves-effect waves-light red darken-4 btn-large">Download
-        <i class="material-icons right">send</i>
-      </button>
+      <div class="row center-align">
+        <button class="btn waves-effect waves-light red darken-4 btn-large">Download
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
     </form>
   </div>
 </div>

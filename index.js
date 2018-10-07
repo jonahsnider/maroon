@@ -3,9 +3,9 @@ if (process.env.SQREEN_TOKEN) require('sqreen');
 const signale = require('signale');
 const getID = require('./util/getID');
 const ytdl = require('ytdl-core');
+const requestLogger = require('./util/requestLogger');
 const searchVideo = require('./util/searchVideo');
 const path = require('path');
-const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const ms = require('ms');
 const RateLimit = require('express-rate-limit');
@@ -34,7 +34,7 @@ const limiter = new RateLimit({
 app.use(compression());
 
 if (process.env.SQREEN_TOKEN) {
-  signale.info('Using Sqreen');
+  signale.info('using Sqreen');
 
   app.use(helmet({
     frameguard: false,
@@ -42,10 +42,11 @@ if (process.env.SQREEN_TOKEN) {
     xssFilter: false
   }));
 } else {
-  signale.info('Continuing without using Sqreen');
+  signale.info('not using Sqreen');
   app.use(helmet());
 }
-app.use(morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev'));
+
+app.use(requestLogger);
 app.use(limiter);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -80,8 +81,9 @@ app
   .get('/keybase.txt', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'keybase.txt'));
   })
+  // eslint-disable-next-line consistent-return
   .post('/', async (req, res) => {
-    const { query, filter } = req.body;
+    const { query, filter, quality } = req.body;
 
     signale.debug('req.body', req.body);
 
@@ -101,9 +103,25 @@ app
       return res.end();
     }
 
+    if (!quality) {
+      renderTemplate(res, 'error.ejs', {
+        error: 'quality was missing'
+      });
+      res.status(400);
+      return res.end();
+    }
+
     if (!['audioonly', 'audioandvideo'].includes(filter)) {
       renderTemplate(res, 'error.ejs', {
         error: 'filter type was invalid value'
+      });
+      res.status(400);
+      return res.end();
+    }
+
+    if (!['highest', 'lowest'].includes(quality)) {
+      renderTemplate(res, 'error.ejs', {
+        error: 'quality type was invalid value'
       });
       res.status(400);
       return res.end();
@@ -113,6 +131,18 @@ app
       quality: filter === 'audioonly' ? 'highestaudio' : 'highest',
       filter
     };
+
+    if (filter === 'audioonly' && quality === 'highest') {
+      options.quality = 'highestaudio';
+    } else if (filter === 'audioonly') {
+      options.quality = 'lowest';
+    } else if (filter === 'audioandvideo' && quality === 'highest') {
+      options.quality = 'highest';
+    } else {
+      options.quality = 'lowest';
+    }
+
+    signale.debug(`options.quality for ${filter} at ${quality} quality:`, options.quality);
 
     let videoID;
     let ytVideo;
@@ -124,19 +154,26 @@ app
     } else if (process.env.YOUTUBE_API_KEY) {
       // If a search term was passed in
       ytVideo = await searchVideo(query);
-      videoID = ytVideo.id;
+      if (ytVideo) videoID = ytVideo.id;
     }
 
     if (!videoID) {
       renderTemplate(res, 'noVideos.ejs');
       res.status(204);
-      res.send('no video found');
       return res.end();
     }
 
     res.attachment(`${ytVideo.title}.${filter === 'audioonly' ? 'mp3' : 'mp4'}`);
 
-    return ytdl(videoID, options).pipe(res);
+    const stream = ytdl(videoID, options);
+
+    stream.on('error', error => {
+      signale.error('Error occured while streaming video', error);
+      res.status(502);
+      signale.debug('finished rendering');
+    });
+
+    stream.pipe(res);
   });
 
 app.use((req, res) => {
@@ -147,7 +184,7 @@ app.use((req, res) => {
   }
 });
 
-const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port);
 signale.info(`listening on port ${port}`);
