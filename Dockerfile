@@ -1,4 +1,4 @@
-FROM node:8.11.4-alpine
+FROM node:8.12.0-alpine
 
 LABEL maintainer "Jonah Snider <me@jonahsnider.ninja> (jonahsnider.ninja)"
 
@@ -21,6 +21,9 @@ ENV SQREEN_TOKEN=
 ENV YOUTUBE_API_KEY=
 ENV PORT=3000
 ENV URL=
+ENV PM2_PUBLIC_KEY=
+ENV PM2_SECRET_KEY=
+ENV SENTRY_DSN=
 
 EXPOSE 3000
 

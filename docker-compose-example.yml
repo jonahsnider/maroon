@@ -12,3 +12,6 @@ services:
       - SQREEN_TOKEN=5d6e84d710cf1fd
       - PORT=80
       - URL=https://example.com
+      - SENTRY_DSN=https://5d6e84d710cf1fd@sentry.io/463546
+      - PM2_PUBLIC_KEY=5d6e84d710cf1fd
+      - PM2_SECRET_KEY=5d6e84d710cf1fd
