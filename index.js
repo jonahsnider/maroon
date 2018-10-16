@@ -61,7 +61,8 @@ const renderTemplate = (res, template, data = {}) => {
       url: process.env.URL,
       description: packageJSON.description
     },
-    instance: process.env.NODE_APP_INSTANCE || null
+    instance: process.env.NODE_APP_INSTANCE || null,
+    version: packageJSON.version
   };
   res.render(template, Object.assign(baseData, data));
 };
