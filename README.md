@@ -28,16 +28,6 @@ All environment variables are optional, but you should provide a YouTube Data AP
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/pizzafox/maroon/tree/master)
 
-### Docker
-
-1. Install prerequisites
-    - [Docker Compose](https://docs.docker.com/compose/install/)
-2. Download the `docker-compose.yml` example file
-    - `wget https://raw.githubusercontent.com/pizzafox/maroon/master/docker-compose.yml.example -O docker-compose.yml`
-3. Add in environment variables (all are optional)
-4. Compose up
-    - `docker-compose up`
-
 ### Node.js
 
 1. Install prerequisites
