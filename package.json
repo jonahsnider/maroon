@@ -40,7 +40,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "pm2 start"
+    "start": "pm2-runtime start ecosystem.config.js"
   },
   "signale": {
     "displayDate": true,
