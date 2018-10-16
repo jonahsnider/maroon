@@ -40,11 +40,11 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "pm2-runtime index.js"
+    "start": "pm2 start"
   },
   "signale": {
     "displayDate": true,
     "displayTimestamp": true
   },
-  "version": "1.8.2"
+  "version": "2.0.0"
 }

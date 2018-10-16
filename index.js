@@ -1,16 +1,13 @@
 if (process.env.SQREEN_TOKEN) require('sqreen');
 
-const signale = require('signale');
+const logger = require('signale');
 const getID = require('./util/getID');
 const ytdl = require('ytdl-core');
 const requestLogger = require('./util/requestLogger');
-const searchVideo = require('./util/searchVideo');
 const path = require('path');
 const bodyParser = require('body-parser');
 const ms = require('ms');
 const RateLimit = require('express-rate-limit');
-const YouTube = require('simple-youtube-api');
-const youtube = new YouTube(process.env.YOUTUBE_API_KEY);
 const express = require('express');
 const app = express();
 const { renderFile } = require('ejs');
@@ -18,12 +15,14 @@ const packageJSON = require('./package.json');
 const compression = require('compression');
 const helmet = require('helmet');
 
-signale.start('maroon started');
+logger.start('maroon started');
 
-if (!process.env.YOUTUBE_API_KEY) signale.warn('No YouTube API key provided, search will be disabled');
+if (!process.env.YOUTUBE_API_KEY) {
+  logger.warn('No YouTube API key provided, search will be disabled');
+}
 
 process.on('unhandledRejection', (reason, p) => {
-  signale.error('Unhandled Rejection at: Promise', p, 'reason:', reason);
+  logger.error('Unhandled Rejection at: Promise', p, 'reason:', reason);
 });
 
 const limiter = new RateLimit({
@@ -34,7 +33,7 @@ const limiter = new RateLimit({
 app.use(compression());
 
 if (process.env.SQREEN_TOKEN) {
-  signale.info('using Sqreen');
+  logger.info('using Sqreen');
 
   app.use(helmet({
     frameguard: false,
@@ -42,7 +41,7 @@ if (process.env.SQREEN_TOKEN) {
     xssFilter: false
   }));
 } else {
-  signale.info('not using Sqreen');
+  logger.info('not using Sqreen');
   app.use(helmet());
 }
 
@@ -61,7 +60,8 @@ const renderTemplate = (res, template, data = {}) => {
     siteData: {
       url: process.env.URL,
       description: packageJSON.description
-    }
+    },
+    instance: process.env.NODE_APP_INSTANCE || null
   };
   res.render(template, Object.assign(baseData, data));
 };
@@ -141,16 +141,18 @@ app
     }
 
     let videoID;
-    let ytVideo;
+
+    logger.fatal('process.env.youtube who care:', process.env.YOUTUBE_API_KEY);
+    logger.fatal('do it exist:', !!process.env.YOUTUBE_API_KEY);
 
     if (getID(query)) {
       // If an ID or URL was passed in
       videoID = getID(query);
-      ytVideo = await youtube.getVideoByID(videoID);
     } else if (process.env.YOUTUBE_API_KEY) {
       // If a search term was passed in
-      ytVideo = await searchVideo(query);
-      if (ytVideo) videoID = ytVideo.id;
+      const searchVideo = require('./util/searchVideo');
+
+      videoID = (await searchVideo(query)).id;
     }
 
     if (!videoID) {
@@ -159,12 +161,15 @@ app
       return res.end();
     }
 
-    res.attachment(`${ytVideo.title}.${filter === 'audioonly' ? 'mp3' : 'mp4'}`);
+    const data = await ytdl.getBasicInfo(videoID);
+    const displayName = data.title;
+
+    res.attachment(`${displayName}.${filter === 'audioonly' ? 'mp3' : 'mp4'}`);
 
     const stream = ytdl(videoID, options);
 
     stream.on('error', error => {
-      signale.error('Error occured while streaming video', error);
+      logger.error('Error occured while streaming video', error);
       res.status(502);
     });
 
@@ -182,4 +187,4 @@ app.use((req, res) => {
 const port = process.env.PORT || 3000;
 
 app.listen(port);
-signale.info(`listening on port ${port}`);
+logger.info(`listening on port ${port}`);
