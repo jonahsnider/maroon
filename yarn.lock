@@ -2900,10 +2900,10 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-sqreen@1.26.0:
-  version "1.26.0"
-  resolved "https://registry.yarnpkg.com/sqreen/-/sqreen-1.26.0.tgz#ad272d997f0482593f46dded892bb0548554c957"
-  integrity sha512-X4z2LDbEAql4BsWPfid9KlHD/BjfzBk7eMpcGKzQTSPfh+qdZlDSfJjQ80d+v4oxae4UuWvV+gbjRQ74P8bskA==
+sqreen@1.26.1:
+  version "1.26.1"
+  resolved "https://registry.yarnpkg.com/sqreen/-/sqreen-1.26.1.tgz#fd6411428256760e33488b638f59598452969652"
+  integrity sha512-Gy/94vIi3viFMwIwwhAITtl+cn6ke9SpC7bPUv6gP8x/dxyvjLC9hrxnpO4W+MXIsL8meoulSJdryoYWJ3wPOw==
   dependencies:
     cls-bluebird "^2.0.1"
     commander "^2.18.0"
@@ -3310,10 +3310,10 @@ yamljs@^0.3.0:
     argparse "^1.0.7"
     glob "^7.0.5"
 
-ytdl-core@0.26.1:
-  version "0.26.1"
-  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-0.26.1.tgz#dc50c7ee8da10616d8933b62ae3cf1e7259c6e99"
-  integrity sha512-p6mZQRI704Tl/yZoYB3j1rSJj7sSKSLJ567FUUbRkqNhmAXgASIERjROBzo9eYwrV/ZNbZ0+jSG6kvK3MASf2Q==
+ytdl-core@0.26.2:
+  version "0.26.2"
+  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-0.26.2.tgz#64f172a6ea56aa5d54d25650df2fd5b999854967"
+  integrity sha512-lS3UmErpBO9sdISedXy2NPsomxPEHlugWUhBQW+6ClHtd1VygNp5UWsU48xg9d0hcq+SJbORd70LOe7KTCjryg==
   dependencies:
     html-entities "^1.1.3"
     m3u8stream "^0.4.2"
