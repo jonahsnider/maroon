@@ -23,7 +23,7 @@ module.exports = {
       SQREEN_TOKEN: process.env.SQREEN_TOKEN,
       YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY,
       SENTRY_DSN: process.env.SENTRY_DSN,
-      PORT: 80
+      PORT: 8080
     }
   }],
 
