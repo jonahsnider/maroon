@@ -15,7 +15,7 @@ const packageJSON = require('./package.json');
 const compression = require('compression');
 const helmet = require('helmet');
 
-logger.start('maroon started');
+logger.start(`maroon started in ${process.env.NODE_ENV} mode`);
 
 if (!process.env.YOUTUBE_API_KEY) {
   logger.warn('No YouTube API key provided, search will be disabled');
