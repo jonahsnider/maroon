@@ -14,11 +14,6 @@
       "description": "Secret key for PM2+ integration",
       "required": false
     },
-    "PORT": {
-      "description": "Port to listen on",
-      "required": false,
-      "value": "80"
-    },
     "SENTRY_DSN": {
       "description": "URI for error logging on Sentry",
       "required": false
