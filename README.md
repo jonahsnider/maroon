@@ -18,6 +18,7 @@ All environment variables are optional, but you should provide a YouTube Data AP
 |-------------------|---------------------------------------------------------|----------|
 | `PM2_PUBLIC_KEY`  | Public key for PM2+ integration                         | Yes      |
 | `PM2_SECRET_KEY`  | Secret key for PM2+ integration                         | Yes      |
+| `PORT`            | Port to listen on                                       | Yes      |
 | `SENTRY_DSN`      | URI for error logging on Sentry                         | Yes      |
 | `SQREEN_TOKEN`    | Token to use for protecting the application with Sqreen | Yes      |
 | `URL`             | URL of the instance                                     | Yes      |

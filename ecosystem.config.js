@@ -16,14 +16,14 @@ module.exports = {
       SQREEN_TOKEN: process.env.SQREEN_TOKEN,
       YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY,
       SENTRY_DSN: process.env.SENTRY_DSN,
-      PORT: 3000
+      PORT: process.env.PORT || 3000
     },
     env_production: {
       NODE_ENV: 'production',
       SQREEN_TOKEN: process.env.SQREEN_TOKEN,
       YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY,
       SENTRY_DSN: process.env.SENTRY_DSN,
-      PORT: 8080
+      PORT: process.env.PORT || 8080
     }
   }],
 
