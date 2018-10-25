@@ -1532,6 +1532,13 @@ ip-range-check@0.0.2:
   dependencies:
     ipaddr.js "^1.0.1"
 
+ip-router@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ip-router/-/ip-router-1.0.0.tgz#13815a1a9769869b9bfcc2eef5602211c95b888b"
+  integrity sha1-E4FaGpdphpub/MLu9WAiEclbiIs=
+  dependencies:
+    ipaddr.js "~0.1.8"
+
 ip@^1.1.4:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
@@ -1546,6 +1553,11 @@ ipaddr.js@^1.0.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.8.1.tgz#fa4b79fa47fd3def5e3b159825161c0a519c9427"
   integrity sha1-+kt5+kf9Pe9eOxWYJRYcClGclCc=
+
+ipaddr.js@~0.1.8:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-0.1.9.tgz#a9c78ccc12dc9010f296ab9aef2f61f432d69efa"
+  integrity sha1-qceMzBLckBDylqua7y9h9DLWnvo=
 
 is-accessor-descriptor@^0.1.6:
   version "0.1.6"
@@ -2900,10 +2912,10 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-sqreen@1.26.1:
-  version "1.26.1"
-  resolved "https://registry.yarnpkg.com/sqreen/-/sqreen-1.26.1.tgz#fd6411428256760e33488b638f59598452969652"
-  integrity sha512-Gy/94vIi3viFMwIwwhAITtl+cn6ke9SpC7bPUv6gP8x/dxyvjLC9hrxnpO4W+MXIsL8meoulSJdryoYWJ3wPOw==
+sqreen@1.26.2:
+  version "1.26.2"
+  resolved "https://registry.yarnpkg.com/sqreen/-/sqreen-1.26.2.tgz#5912ffec10abd7c6af2033a28ad966068dfd9097"
+  integrity sha512-6S4B13D8dxG46MhZZkcNH4AYcIiDUQTWqWtfg1qhlcxwDRMUHsgiRTkJ5uouO6uokJRp1ockHlA5VZ4FyGdOEw==
   dependencies:
     cls-bluebird "^2.0.1"
     commander "^2.18.0"
@@ -2916,6 +2928,7 @@ sqreen@1.26.1:
     https-proxy-agent "^2.2.1"
     ip "^1.1.4"
     ip-range-check "0.0.2"
+    ip-router "^1.0.0"
     joi "^10.6.0"
     mkdirp "^0.5.1"
     on-finished "^2.3.0"
@@ -3310,10 +3323,10 @@ yamljs@^0.3.0:
     argparse "^1.0.7"
     glob "^7.0.5"
 
-ytdl-core@0.26.2:
-  version "0.26.2"
-  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-0.26.2.tgz#64f172a6ea56aa5d54d25650df2fd5b999854967"
-  integrity sha512-lS3UmErpBO9sdISedXy2NPsomxPEHlugWUhBQW+6ClHtd1VygNp5UWsU48xg9d0hcq+SJbORd70LOe7KTCjryg==
+ytdl-core@0.26.3:
+  version "0.26.3"
+  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-0.26.3.tgz#33b5b8991dff0d5b6a1ffea3edf4a4e945b46549"
+  integrity sha512-KD0SLFqVNhH8N4Ie+qdusqfFmyX7SB6+y+S1MCI7vY9zS/wjRxH/zgoYRUwpP+YfXaiWzBPVIzy/5wK5asVUXQ==
   dependencies:
     html-entities "^1.1.3"
     m3u8stream "^0.4.2"
