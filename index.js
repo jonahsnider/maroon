@@ -8,6 +8,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const ms = require('ms');
 const RateLimit = require('express-rate-limit');
+const KeyvStore = require('rate-limit-keyv');
+const Keyv = require('keyv');
 const express = require('express');
 const app = express();
 const { renderFile } = require('ejs');
@@ -26,6 +28,7 @@ process.on('unhandledRejection', (reason, p) => {
 });
 
 const limiter = new RateLimit({
+  store: new KeyvStore(new Keyv({ namespace: 'rate-limit' })),
   windowMs: ms('5 minutes'),
   max: 250
 });
