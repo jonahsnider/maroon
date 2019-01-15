@@ -16,7 +16,7 @@
     "rate-limit-keyv": "~1.0.0",
     "signale": "~1.3.0",
     "simple-youtube-api": "~5.1.1",
-    "sqreen": "~1.28.1",
+    "sqreen": "~1.28.2",
     "ytdl-core": "~0.29.1"
   },
   "description": "An Express powered web app for downloading YouTube videos",
