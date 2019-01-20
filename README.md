@@ -2,9 +2,10 @@
 
 # maroon
 
-[![Realtime application protection](https://s3-eu-west-1.amazonaws.com/sqreen-assets/badges/20171107/sqreen-light-badge.svg)](https://www.sqreen.io/?utm_source=badge) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/pizzafox/maroon/tree/master)
+[![Realtime application protection](https://s3-eu-west-1.amazonaws.com/sqreen-assets/badges/20171107/sqreen-light-badge.svg)](https://www.sqreen.io/?utm_source=badge)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/pizzafox/maroon/tree/master)
 
-Maroon is an Express powered web app for downloading YouTube music videos.
+Maroon is an Express powered web app for downloading YouTube videos.
 
 ## Usage
 
