@@ -4,7 +4,7 @@ dependencies:
   ejs: 2.6.1
   express: 4.16.4
   express-rate-limit: 3.3.2
-  helmet: 3.15.0
+  helmet: 3.15.1
   keyv: 3.1.0
   ms: 2.1.1
   pm2: 3.2.9
@@ -734,6 +734,12 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
+  /depd/2.0.0:
+    dev: false
+    engines:
+      node: '>= 0.8'
+    resolution:
+      integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==
   /destroy/1.0.4:
     dev: false
     resolution:
@@ -1347,8 +1353,9 @@ packages:
     dev: false
     resolution:
       integrity: sha512-sCHwywg4daQ2mY0YYwXSZRsgcCeerUwxMwNixGA7aMLkVmPTYBl7gJoZDHOZyXkqPrtuDT3s2B1A+RLI7WxSdQ==
-  /helmet/3.15.0:
+  /helmet/3.15.1:
     dependencies:
+      depd: 2.0.0
       dns-prefetch-control: 0.1.0
       dont-sniff-mimetype: 1.0.0
       expect-ct: 0.1.1
@@ -1367,7 +1374,7 @@ packages:
     engines:
       node: '>= 0.10.0'
     resolution:
-      integrity: sha512-j9JjtAnWJj09lqe/PEICrhuDaX30TeokXJ9tW6ZPhVH0+LMoihDeJ58CdWeTGzM66p6EiIODmgAaWfdeIWI4Gg==
+      integrity: sha512-hgoNe/sjKlKNvJ3g9Gz149H14BjMMWOCmW/DTXl7IfyKGtIK37GePwZrHNfr4aPXdKVyXcTj26RgRFbPKDy9lw==
   /hide-powered-by/1.0.0:
     dev: false
     resolution:
@@ -3347,7 +3354,7 @@ specifiers:
   eslint-config-amber: ^2.0.0
   express: ^4.16.4
   express-rate-limit: ^3.3.2
-  helmet: ^3.15.0
+  helmet: ^3.15.1
   keyv: ^3.1.0
   ms: ^2.1.1
   pm2: ^3.2.9
