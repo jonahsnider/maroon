@@ -146,9 +146,6 @@ app
 
     let videoID;
 
-    logger.fatal('process.env.youtube who care:', process.env.YOUTUBE_API_KEY);
-    logger.fatal('do it exist:', !!process.env.YOUTUBE_API_KEY);
-
     if (getID(query)) {
       // If an ID or URL was passed in
       videoID = getID(query);
@@ -173,7 +170,7 @@ app
     const stream = ytdl(videoID, options);
 
     stream.on('error', error => {
-      logger.error('Error occured while streaming video', error);
+      logger.error('Error occurred while streaming video', error);
       res.status(502);
     });
 
