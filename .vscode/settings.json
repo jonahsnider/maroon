@@ -1,3 +1,14 @@
 {
-  "deepscan.enable": true
+  "deepscan.enable": true,
+  "cSpell.words": [
+    "audioandvideo",
+    "audioonly",
+    "frameguard",
+    "highestaudio",
+    "keybase",
+    "signale",
+    "webapp",
+    "youtube",
+    "ytdl"
+  ]
 }
