@@ -1,14 +1,7 @@
 {
-  "deepscan.enable": true,
-  "cSpell.words": [
-    "audioandvideo",
-    "audioonly",
-    "frameguard",
-    "highestaudio",
-    "keybase",
-    "signale",
-    "webapp",
-    "youtube",
-    "ytdl"
-  ]
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": false
+  },
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

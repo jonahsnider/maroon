@@ -1,55 +1,69 @@
 {
-  "author": "Jonah Snider <me@jonahsnider.ninja> (https://jonahsnider.ninja/)",
-  "bugs": {
-    "url": "https://github.com/pizzafox/maroon/issues"
-  },
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "compression": "^1.7.4",
-    "ejs": "^3.0.1",
-    "express": "^4.16.4",
-    "express-rate-limit": "^5.0.0",
-    "helmet": "^3.16.0",
-    "keyv": "^3.1.0",
-    "ms": "^2.1.1",
-    "pm2": "^4.0.0",
-    "rate-limit-keyv": "^1.0.0",
-    "signale": "^1.4.0",
-    "simple-youtube-api": "^5.1.1",
-    "sqreen": "^1.29.4",
-    "ytdl-core": "^2.0.0"
-  },
-  "description": "An Express powered web app for downloading YouTube videos",
-  "devDependencies": {
-    "eslint": "^5.13.0",
-    "eslint-config-amber": "^2.0.0"
-  },
-  "engines": {
-    "node": "10.x.x"
-  },
-  "homepage": "https://github.com/pizzafox/maroon#readme",
-  "keywords": [
-    "express",
-    "ytdl",
-    "webapp"
-  ],
-  "license": "Apache-2.0",
-  "main": "index.js",
-  "name": "maroon",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pizzafox/maroon.git"
-  },
-  "scripts": {
-    "lint": "eslint .",
-    "restart": "pm2-runtime reload ecosystem.config.js",
-    "start": "npm run start:production",
-    "start:development": "pm2-runtime start ecosystem.config.js",
-    "start:production": "pm2-runtime start ecosystem.config.js --env production"
-  },
-  "signale": {
-    "displayDate": true,
-    "displayTimestamp": true
-  },
-  "version": "2.1.5"
+	"author": {
+		"email": "jonah@jonah.pw",
+		"name": "Jonah Snider",
+		"url": "https://jonah.pw"
+	},
+	"dependencies": {
+		"@material-ui/core": "4.10.1",
+		"@material-ui/icons": "4.9.1",
+		"firebase": "7.14.6",
+		"next": "9.4.4",
+		"next-compose-plugins": "2.2.0",
+		"next-offline": "5.0.2",
+		"react": "16.13.1",
+		"react-dom": "16.13.1",
+		"typescript": "3.9.3"
+	},
+	"devDependencies": {
+		"@types/node": "12.12.44",
+		"@types/react": "16.9.35",
+		"eslint-config-xo-react": "^0.23.0",
+		"eslint-config-xo-typescript": "^0.31.0",
+		"eslint-plugin-react": "^7.20.0",
+		"eslint-plugin-react-hooks": "^4.0.4",
+		"prettier": "2.0.4",
+		"xo": "0.32.0"
+	},
+	"homepage": "https://maroon.jonah.pw",
+	"name": "maroon",
+	"private": true,
+	"scripts": {
+		"build": "next build",
+		"dev": "next dev",
+		"export": "next export",
+		"lint": "xo",
+		"preexport": "rm -rf out",
+		"start": "next start",
+		"style": "prettier --ignore-path .gitignore --check ."
+	},
+	"version": "3.0.0",
+	"xo": {
+		"extends": [
+			"xo",
+			"xo/esnext",
+			"xo/browser",
+			"xo-react"
+		],
+		"overrides": [
+			{
+				"extends": [
+					"xo"
+				],
+				"files": "*.config.js"
+			}
+		],
+		"prettier": true,
+		"rules": {
+			"import/no-unassigned-import": [
+				"error",
+				{
+					"allow": [
+						"firebase/*",
+						"firebase"
+					]
+				}
+			]
+		}
+	}
 }
