@@ -1,5 +1,5 @@
 import {downloadUrl} from '../config/api';
-import {getVideoID, validateURL} from './yt';
+import {getVideoID, validateURL} from 'ytdl-core';
 
 /**
  * Check if a video URL is good to download.

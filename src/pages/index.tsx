@@ -3,7 +3,7 @@ import React, {ChangeEvent, useState} from 'react';
 import Seo from '../components/seo';
 import {downloadUrl} from '../config/api';
 import {checkVideo} from '../util/validate';
-import {getVideoID} from '../util/yt';
+import {getVideoID} from 'ytdl-core';
 import woah from '../woah.module.css';
 
 // Export const config = {amp: 'hybrid'};
