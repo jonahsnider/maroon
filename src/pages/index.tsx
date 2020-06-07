@@ -28,13 +28,7 @@ const Home: React.FC = () => {
 	let videoDownloadUrl: string | null = null;
 
 	if (valid && url !== '') {
-		const queryParameters = new URLSearchParams({url: getVideoID(url)});
-
-		if (audioOnly) {
-			queryParameters.set('type', 'audio');
-		}
-
-		videoDownloadUrl = `${downloadUrl}?${queryParameters.toString()}`;
+		videoDownloadUrl = [downloadUrl, audioOnly ? 'audio' : 'video', getVideoID(url)].join('/');
 	}
 
 	return (

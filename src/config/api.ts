@@ -1,2 +1,2 @@
 /** Base URL for downloading videos. */
-export const downloadUrl = 'http://localhost:3001'; // 'https://dl.maroon.jonah.pw';
+export const downloadUrl = `http${process.env.NODE_ENV === 'development' ? '://localhost:3000' : 's://maroon.glitch.me'}/api`;

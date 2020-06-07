@@ -7,5 +7,5 @@ export const siteMetadata = {
 		locale: 'en_US'
 	},
 	description: 'download youtube videos, really easily',
-	url: 'https://maroon.jonah.pw'
+	url: process.env.NODE_ENV === 'production' ? 'https://maroon.jonah.pw' : 'http://localhost:3000'
 };

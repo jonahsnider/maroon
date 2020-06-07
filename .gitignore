@@ -170,3 +170,7 @@ $RECYCLE.BIN/
 
 # Next.js static-site export folder
 out
+
+# Service worker
+public/sw.js
+public/workbox-*.js
