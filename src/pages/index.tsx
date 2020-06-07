@@ -1,42 +1,51 @@
-import {Button, Checkbox, Grid, Link, TextField, Typography, useTheme} from '@material-ui/core';
-import React, {ChangeEvent, useState} from 'react';
+import {Button, Checkbox, Grid, Link, TextField, Typography, useTheme, CircularProgress} from '@material-ui/core';
+import React, {ChangeEvent, useState, useEffect} from 'react';
 import Seo from '../components/seo';
 import {downloadUrl} from '../config/api';
-import {getVideoID, validateURL} from '../util/yt';
+import {checkVideo} from '../util/validate';
+import {getVideoID} from '../util/yt';
 import woah from '../woah.module.css';
 
 // Export const config = {amp: 'hybrid'};
+
+const animations = false;
 
 /**
  * Home page.
  */
 const Home: React.FC = () => {
 	const theme = useTheme();
+
 	const [url, setUrl] = useState('');
-	const [valid, setValidity] = useState(true);
 	const [audioOnly, setAudioOnly] = useState(false);
-
-	const handleVideoChange = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-		setUrl(event.target.value);
-		setValidity(validateURL(event.target.value));
-	};
-
-	const handleAudioOnlyChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setAudioOnly(event.target.checked);
-	};
+	const [pendingValidation, setPendingValidation] = useState(false);
+	const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
 	let videoDownloadUrl: string | null = null;
 
-	if (valid && url !== '') {
-		videoDownloadUrl = [downloadUrl, audioOnly ? 'audio' : 'video', getVideoID(url)].join('/');
+	if (errorMessage === null) {
+		try {
+			videoDownloadUrl = [downloadUrl, 'dl', audioOnly ? 'audio' : 'video', getVideoID(url)].join('/');
+		} catch {}
 	}
+
+	const handleVideoChange = async (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+		const newUrl = event.target.value;
+		setUrl(newUrl);
+
+		setPendingValidation(true);
+		setErrorMessage(await checkVideo(newUrl));
+		setPendingValidation(false);
+	};
+
+	const handleAudioOnlyChange = (event: ChangeEvent<HTMLInputElement>) => setAudioOnly(event.target.checked);
 
 	return (
 		<>
 			<Seo theme={theme} pageTitle='maroon' />
 
 			<Grid container direction='column' justify='center' alignItems='center' spacing={1} style={{minHeight: '100vh'}}>
-				<Typography variant='h1' align='center' className={woah.rotateComplex}>
+				<Typography variant='h1' align='center' className={animations ? woah.rotateComplex : undefined}>
 					maroon
 				</Typography>
 
@@ -46,18 +55,19 @@ const Home: React.FC = () => {
 						color='primary'
 						label='video'
 						variant='outlined'
-						error={!valid}
+						error={errorMessage !== null}
 						size='medium'
-						helperText={valid ? ' ' : 'invalid url'}
+						helperText={errorMessage ?? ' '}
 						value={url}
-						className={woah.wowzors}
+						className={animations ? woah.wowzors : undefined}
 						onChange={handleVideoChange}
 					/>
-					<Typography color='textSecondary' className={woah.spin3D}>
+					<Typography color='textSecondary' className={animations ? woah.spin3D : undefined}>
 						just the audio?
 						<Checkbox checked={audioOnly} color='primary' onChange={handleAudioOnlyChange} />
 					</Typography>
 				</Grid>
+
 				<Grid item>
 					<Button
 						download
@@ -65,18 +75,20 @@ const Home: React.FC = () => {
 						color='primary'
 						type='submit'
 						variant='contained'
-						disabled={!valid || url === ''}
+						disabled={url === '' || pendingValidation || errorMessage !== null || videoDownloadUrl === null}
 						size='large'
 						href={videoDownloadUrl === null ? undefined : videoDownloadUrl}
-						className={woah.blackMirror}
+						className={animations ? woah.blackMirror : undefined}
 					>
 						download
 					</Button>
 				</Grid>
-				<Link className={woah.simpleEntrance} href='https://jonah.pw' color='textPrimary'>
+
+				<Link className={animations ? woah.simpleEntrance : undefined} href='https://jonah.pw' color='textPrimary'>
 					<Typography>(by jonah)</Typography>
 				</Link>
-				<Typography color='textSecondary' className={woah.flyIn}>
+
+				<Typography color='textSecondary' className={animations ? woah.flyIn : undefined}>
 					inspect network traffic for api instructions
 				</Typography>
 			</Grid>

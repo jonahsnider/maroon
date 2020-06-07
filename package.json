@@ -11,8 +11,6 @@
 		"next": "9.4.4",
 		"next-compose-plugins": "2.2.0",
 		"next-pwa": "2.5.0",
-		"pino": "6.3.2",
-		"pino-http": "5.2.0",
 		"react": "16.13.1",
 		"react-dom": "16.13.1",
 		"typescript": "3.9.3",
@@ -27,7 +25,6 @@
 		"eslint-config-xo-typescript": "0.31.0",
 		"eslint-plugin-react": "7.20.0",
 		"eslint-plugin-react-hooks": "4.0.4",
-		"pino-pretty": "4.0.0",
 		"prettier": "2.0.4",
 		"xo": "0.32.0"
 	},
@@ -57,7 +54,11 @@
 				"extends": [
 					"xo"
 				],
-				"files": ["*.config.js", "src/config.ts", "src/pages/api/*"]
+				"files": [
+					"*.config.js",
+					"src/config.ts",
+					"src/pages/api/*"
+				]
 			}
 		],
 		"prettier": true,
