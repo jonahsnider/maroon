@@ -21,6 +21,7 @@ WORKDIR /usr/src/maroon
 COPY package.json ./
 
 COPY --from=builder /usr/src/builder/.next .next
+COPY --from=builder /usr/src/builder/public .public
 COPY --from=builder /usr/src/builder/node_modules node_modules
 
 ENTRYPOINT ["yarn", "start"]
