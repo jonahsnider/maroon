@@ -4,7 +4,7 @@ import {getBasicInfo} from 'ytdl-core';
 /**
  * Checks if a video is valid.
  */
-export default async (request: NextApiRequest, response: NextApiResponse) => {
+const validateVideo = async (request: NextApiRequest, response: NextApiResponse) => {
 	const {video} = request.query;
 
 	if (typeof video !== 'string') {
@@ -24,3 +24,5 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
 			return response.end();
 		});
 };
+
+export default validateVideo;

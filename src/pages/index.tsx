@@ -1,5 +1,5 @@
-import {Button, Checkbox, Grid, Link, TextField, Typography, useTheme, CircularProgress} from '@material-ui/core';
-import React, {ChangeEvent, useState, useEffect} from 'react';
+import {Button, Checkbox, Grid, Link, TextField, Typography, useTheme} from '@material-ui/core';
+import React, {ChangeEvent, useState} from 'react';
 import Seo from '../components/seo';
 import {downloadUrl} from '../config/api';
 import {checkVideo} from '../util/validate';

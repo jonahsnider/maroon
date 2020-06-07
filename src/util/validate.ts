@@ -16,7 +16,7 @@ export async function checkVideo(video: string): Promise<string | null> {
 		if (!response.ok) {
 			return 'the server says that video is maybe not exist???';
 		}
-	} catch (error) {
+	} catch {
 		return 'an error occurred while trying to check if your video ok';
 	}
 

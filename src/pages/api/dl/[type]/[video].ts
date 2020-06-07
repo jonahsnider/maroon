@@ -7,7 +7,7 @@ const handleError = (error: Error, response: NextApiResponse) => {
 	response.end();
 };
 
-export default async (request: NextApiRequest, response: NextApiResponse) => {
+const downloadVideo = async (request: NextApiRequest, response: NextApiResponse) => {
 	const {video, type} = request.query;
 
 	if (video === undefined) {
@@ -48,3 +48,5 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
 		handleError(error, response);
 	}
 };
+
+export default downloadVideo;
