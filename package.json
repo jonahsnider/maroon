@@ -7,7 +7,10 @@
 	"dependencies": {
 		"@material-ui/core": "4.10.1",
 		"@material-ui/icons": "4.9.1",
+		"@types/node": "12.12.44",
+		"@types/react": "16.9.35",
 		"firebase": "7.15.0",
+		"fs-extra": "^9.0.1",
 		"next": "9.4.4",
 		"next-compose-plugins": "2.2.0",
 		"next-pwa": "2.5.0",
@@ -17,10 +20,6 @@
 		"ytdl-core": "2.1.7"
 	},
 	"devDependencies": {
-		"@types/node": "12.12.44",
-		"@types/pino": "6.0.1",
-		"@types/pino-http": "5.0.1",
-		"@types/react": "16.9.35",
 		"eslint-config-xo-react": "0.23.0",
 		"eslint-config-xo-typescript": "0.31.0",
 		"eslint-plugin-react": "7.20.0",
