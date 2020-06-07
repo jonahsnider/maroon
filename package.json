@@ -57,7 +57,7 @@
 				"extends": [
 					"xo"
 				],
-				"files": "*.config.js"
+				"files": ["*.config.js", "src/config.ts", "src/pages/api/*"]
 			}
 		],
 		"prettier": true,
