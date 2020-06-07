@@ -24,8 +24,8 @@ const Seo = (props: Readonly<{theme: Theme; pageTitle: string}>): JSX.Element =>
 
 			<link key='icon' rel='icon' href={`${siteMetadata.url}/favicon.ico`} type='image/x-icon' />
 
-			<meta key='og:image' property='og:image' content={`${siteMetadata.url}/images/logo/icon-512.png`} />
-			<meta key='og:image:secure_url' property='og:image:secure_url' content={`${siteMetadata.url}/images/logo/icon-512.png`} />
+			<meta key='og:image' property='og:image' content={`${siteMetadata.url}/images/icon-512.png`} />
+			<meta key='og:image:secure_url' property='og:image:secure_url' content={`${siteMetadata.url}/images/icon-512.png`} />
 			<meta key='og:image:type' property='og:image:type' content='image/png' />
 			<meta key='og:image:width' property='og:image:width' content='512' />
 			<meta key='og:image:height' property='og:image:height' content='512' />
@@ -37,18 +37,18 @@ const Seo = (props: Readonly<{theme: Theme; pageTitle: string}>): JSX.Element =>
 					rel='icon'
 					type='image/png'
 					sizes={`${dimension}x${dimension}`}
-					href={`${siteMetadata.url}/images/logo/icon-${dimension}.png`}
+					href={`${siteMetadata.url}/images/icon-${dimension}.png`}
 				/>,
 				<link
 					key={`apple-touch-icon-${dimension}`}
 					rel='apple-touch-icon'
 					type='image/png'
 					sizes={`${dimension}x${dimension}`}
-					href={`${siteMetadata.url}/images/logo/icon-${dimension}.png`}
+					href={`${siteMetadata.url}/images/icon-${dimension}.png`}
 				/>
 			])}
 
-			<link key='apple-touch-startup-image' rel='apple-touch-startup-image' href={`${siteMetadata.url}/images/logo/icon-512.png`} />
+			<link key='apple-touch-startup-image' rel='apple-touch-startup-image' href={`${siteMetadata.url}/images/icon-512.png`} />
 
 			<meta key='meta-title' name='title' content={fullTitle} />
 			<meta key='application-name' name='application-name' content={siteMetadata.title} />
