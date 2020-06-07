@@ -1,0 +1,9 @@
+.github
+.next
+.vscode
+node_modules
+.editorconfig
+.gitignore
+netlify.toml
+prettier.config.js
+renovate.json
