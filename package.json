@@ -13,7 +13,7 @@
 		"fs-extra": "9.0.1",
 		"next": "9.4.4",
 		"next-compose-plugins": "2.2.0",
-		"next-pwa": "2.5.0",
+		"next-pwa": "2.6.0",
 		"react": "16.13.1",
 		"react-dom": "16.13.1",
 		"typescript": "3.9.3",
