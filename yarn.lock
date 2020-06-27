@@ -6118,10 +6118,10 @@ next-compose-plugins@2.2.0:
   resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.0.tgz#95cd8eb40ab0652070d76572fb648354191628b0"
   integrity sha512-ChUlpT9tWfJ7YxqGw/WQ2T1gf8EeX93n1XqeQw0lkvGa7seszahvF4eOZUJoq7Hetsbzg4UHVnPoCXfXTyQR3g==
 
-next-pwa@2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/next-pwa/-/next-pwa-2.6.1.tgz#2be33bcb986e105acdafb4696ec08941fb5a8cfe"
-  integrity sha512-zJ6s3S2GWhQN9PyOhusQkWzpGiTpZadhO0fr0y0SCUGNZh8IDdxVjTrPdFkS7k/cxZo8xUPqe7AE6DpzmCaHeQ==
+next-pwa@2.6.3:
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/next-pwa/-/next-pwa-2.6.3.tgz#4c98155318c829142c1f9270704b62880945097b"
+  integrity sha512-WYjp7Yv736S6GwBG+FwC5E1OOVS2Y21Pr6STGLRfRxJc0SX55OlC/0E97iLddQck8KXKYQNrZAwct/M1Cwfodw==
   dependencies:
     clean-webpack-plugin "^3.0.0"
     globby "^11.0.0"
