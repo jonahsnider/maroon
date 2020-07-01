@@ -15,7 +15,7 @@
 		"next-pwa": "2.6.3",
 		"react": "16.13.1",
 		"react-dom": "16.13.1",
-		"typescript": "3.9.3",
+		"typescript": "3.9.6",
 		"ytdl-core": "2.1.7"
 	},
 	"devDependencies": {
