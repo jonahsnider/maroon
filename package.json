@@ -16,7 +16,7 @@
 		"react": "16.13.1",
 		"react-dom": "16.13.1",
 		"typescript": "3.9.6",
-		"ytdl-core": "2.1.7"
+		"ytdl-core": "3.1.2"
 	},
 	"devDependencies": {
 		"eslint-config-xo-react": "0.23.0",
