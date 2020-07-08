@@ -4,6 +4,10 @@ import React from 'react';
 import {siteMetadata} from '../config/site-metadata';
 
 export function generateFullTitle(pageTitle: string): string {
+	if (pageTitle === siteMetadata.title) {
+		return pageTitle;
+	}
+
 	return `${siteMetadata.title} - ${pageTitle}`;
 }
 
