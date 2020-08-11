@@ -5,7 +5,6 @@ import {MaroonTemplate} from '../template';
 export default class MyApp extends App {
 	componentDidMount(): void {
 		// Remove the server-side injected CSS.
-		// eslint-disable-next-line no-unused-expressions
 		document.querySelector('#jss-server-side')?.remove();
 
 		// Initialize Firebase
