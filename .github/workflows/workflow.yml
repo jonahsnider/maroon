@@ -10,22 +10,15 @@ jobs:
 
     steps:
       - name: Checkout git repository
-        uses: actions/checkout@v1
-        with:
-          fetch-depth: 0
-      - name: Setup Node.js for use with Actions
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.14.1'
-      - name: Install Yarn
-        run: curl -o- -L https://yarnpkg.com/install.sh | bash
-      - name: Get yarn cache
-        id: yarn-cache
+        uses: actions/checkout@v2
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Cache dependencies
-        uses: actions/cache@v1
+      - name: Restore cached dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
@@ -47,22 +40,15 @@ jobs:
 
     steps:
       - name: Checkout git repository
-        uses: actions/checkout@v1
-        with:
-          fetch-depth: 0
-      - name: Setup Node.js for use with Actions
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.14.1'
-      - name: Install Yarn
-        run: curl -o- -L https://yarnpkg.com/install.sh | bash
-      - name: Get yarn cache
-        id: yarn-cache
+        uses: actions/checkout@v2
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Cache dependencies
-        uses: actions/cache@v1
+      - name: Restore cached dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
@@ -77,22 +63,15 @@ jobs:
 
     steps:
       - name: Checkout git repository
-        uses: actions/checkout@v1
-        with:
-          fetch-depth: 0
-      - name: Setup Node.js for use with Actions
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.14.1'
-      - name: Install Yarn
-        run: curl -o- -L https://yarnpkg.com/install.sh | bash
-      - name: Get yarn cache
-        id: yarn-cache
+        uses: actions/checkout@v2
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Cache dependencies
-        uses: actions/cache@v1
+      - name: Restore cached dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
@@ -107,22 +86,15 @@ jobs:
 
     steps:
       - name: Checkout git repository
-        uses: actions/checkout@v1
-        with:
-          fetch-depth: 0
-      - name: Setup Node.js for use with Actions
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.14.1'
-      - name: Install Yarn
-        run: curl -o- -L https://yarnpkg.com/install.sh | bash
-      - name: Get yarn cache
-        id: yarn-cache
+        uses: actions/checkout@v2
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Cache dependencies
-        uses: actions/cache@v1
+      - name: Restore cached dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
         with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
