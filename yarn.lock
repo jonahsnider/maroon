@@ -4453,7 +4453,7 @@ globals@^12.1.0:
   dependencies:
     type-fest "^0.8.1"
 
-globby@^11.0.0:
+globby@^11.0.1:
   version "11.0.1"
   resolved "https://registry.yarnpkg.com/globby/-/globby-11.0.1.tgz#9a2bf107a068f3ffeabc49ad702c79ede8cfd357"
   integrity sha512-iH9RmgwCmUJHi2z5o2l3eTtGBtXek1OYlHrbcxOYugyHLmAsZrPj43OtHThd62Buh/Vv6VyCBD2bdyWcGNQqoQ==
@@ -5884,13 +5884,13 @@ next-compose-plugins@2.2.0:
   resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.0.tgz#95cd8eb40ab0652070d76572fb648354191628b0"
   integrity sha512-ChUlpT9tWfJ7YxqGw/WQ2T1gf8EeX93n1XqeQw0lkvGa7seszahvF4eOZUJoq7Hetsbzg4UHVnPoCXfXTyQR3g==
 
-next-pwa@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/next-pwa/-/next-pwa-3.1.1.tgz#cbfc0627824da0ea834913a3c39b6387cd209b2c"
-  integrity sha512-IZIrI/x2iQUdTs8giz998rwaMhQWSlsfE3JWfumCB0eQ//V7Ejx1lRtfhZ4fzi8hKVFtXINVVKXjNlNejrlqCw==
+next-pwa@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/next-pwa/-/next-pwa-3.1.2.tgz#bd0f89641baddd3c167f2d33da7941cd5b649e55"
+  integrity sha512-HFyNseEVUPLWpW9LIJxKOHE12tY7kRW3vKVQFI9w3L29e5+iXgCettu6W68E56/HyhMT/SKks/WqqfNMSEIKOA==
   dependencies:
     clean-webpack-plugin "^3.0.0"
-    globby "^11.0.0"
+    globby "^11.0.1"
     workbox-webpack-plugin "^5.1.3"
     workbox-window "^5.1.3"
 
