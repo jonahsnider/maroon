@@ -19,6 +19,10 @@ export const firebaseApp = firebase.apps.length === 0 ? firebase.initializeApp(f
 
 export const performance = firebase.performance();
 
-firebase.analytics.isSupported().then(() => firebase.analytics());
+firebase.analytics.isSupported().then(supported => {
+	if (supported) {
+		firebase.analytics();
+	}
+});
 
 export default firebaseApp;
