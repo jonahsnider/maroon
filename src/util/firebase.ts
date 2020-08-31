@@ -18,6 +18,7 @@ export const firebaseConfig = {
 export const firebaseApp = firebase.apps.length === 0 ? firebase.initializeApp(firebaseConfig) : firebase.app();
 
 export const performance = firebase.performance();
-export const analytics = firebase.analytics();
+
+firebase.analytics.isSupported().then(() => firebase.analytics());
 
 export default firebaseApp;
