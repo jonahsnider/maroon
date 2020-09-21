@@ -2019,7 +2019,7 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@lazy-http/content-disposition@^1.0.2":
+"@lazy-http/content-disposition@1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@lazy-http/content-disposition/-/content-disposition-1.0.2.tgz#9c8068a78ba9ad77d247068cba6bd32673965367"
   integrity sha512-641NZXEpoLVYlboKG/2k4U+1OykLh+PMIsT4+ICJeyvszIt28FE+mYzDeODXSineQxDQZmjF1Fdsm/lyzsjpLA==
