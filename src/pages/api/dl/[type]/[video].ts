@@ -1,6 +1,7 @@
 import contentDisposition from '@lazy-http/content-disposition';
 import {NextApiRequest, NextApiResponse} from 'next';
 import {downloadFromInfo, getInfo, validateID, validateURL} from 'ytdl-core';
+import FileType from 'file-type';
 
 const handleError = (error: Error, response: NextApiResponse) => {
 	response.status(500);
@@ -34,18 +35,31 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 		});
 
 		stream
-			.once('progress', (chunkLength, totalBytesDownloaded, totalBytes) => {
-				if (totalBytes !== undefined) {
+			.once(
+				'progress',
+				/**
+				 * Emitted whenever a new chunk is received. Passes values describing the download progress.
+				 * @param chunkLength Chunk length in bytes or segment number.
+				 * @param totalBytesDownloaded Total bytes or segments downloaded.
+				 * @param totalBytes Total bytes or segments.
+				 */
+				(chunkLength: number, totalBytesDownloaded: number, totalBytes: number) => {
 					response.setHeader('Content-length', totalBytes);
 				}
-			})
+			)
 			.on('error', error => {
 				handleError(error, response);
 			})
-			.once('pipe', () => {
-				// Start piping video after the download has begun
-				response.setHeader('Content-Disposition', contentDisposition(`${videoInfo.videoDetails.title ?? 'video'}.${downloadType === 'video' ? 'mp4' : 'm4a'}`));
+			.once('pipe', async () => {
+				const extension = (await FileType.fromStream(stream))?.ext;
 
+				if (extension === undefined) {
+					response.setHeader('Content-Disposition', contentDisposition(`${videoInfo.videoDetails.title ?? 'video'}`));
+				} else {
+					response.setHeader('Content-Disposition', contentDisposition(`${videoInfo.videoDetails.title ?? 'video'}.${extension}`));
+				}
+
+				// Start piping video after the download has begun
 				response.send(stream);
 			});
 	} catch (error) {
