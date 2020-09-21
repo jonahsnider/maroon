@@ -1,3 +1,4 @@
+import contentDisposition from '@lazy-http/content-disposition';
 import {NextApiRequest, NextApiResponse} from 'next';
 import {downloadFromInfo, getInfo, validateID, validateURL} from 'ytdl-core';
 
@@ -34,14 +35,17 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 
 		stream
 			.once('progress', (chunkLength, totalBytesDownloaded, totalBytes) => {
-				response.setHeader('Content-length', totalBytes);
+				if (totalBytes !== undefined) {
+					response.setHeader('Content-length', totalBytes);
+				}
 			})
 			.on('error', error => {
 				handleError(error, response);
 			})
 			.once('pipe', () => {
 				// Start piping video after the download has begun
-				response.setHeader('Content-Disposition', `attachment; filename="${videoInfo.title}.${downloadType === 'video' ? 'mp4' : 'm4a'}"`);
+				response.setHeader('Content-Disposition', contentDisposition(`${videoInfo.videoDetails.title ?? 'video'}.${downloadType === 'video' ? 'mp4' : 'm4a'}`));
+
 				response.send(stream);
 			});
 	} catch (error) {
