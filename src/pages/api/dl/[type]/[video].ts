@@ -34,6 +34,9 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 			quality: downloadType === 'video' ? 'highest' : 'highestaudio'
 		});
 
+		const fileType = await FileType.fromStream(stream);
+		const extension = fileType?.ext ?? (downloadType === 'audio' ? 'webm' : 'mp4');
+
 		stream
 			.once(
 				'progress',
@@ -50,14 +53,8 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 			.on('error', error => {
 				handleError(error, response);
 			})
-			.once('pipe', async () => {
-				const extension = (await FileType.fromStream(stream))?.ext;
-
-				if (extension === undefined) {
-					response.setHeader('Content-Disposition', contentDisposition(`${videoInfo.videoDetails.title ?? 'video'}`));
-				} else {
-					response.setHeader('Content-Disposition', contentDisposition(`${videoInfo.videoDetails.title ?? 'video'}.${extension}`));
-				}
+			.once('pipe', () => {
+				response.setHeader('Content-Disposition', contentDisposition(`${videoInfo.videoDetails.title ?? 'video'}.${extension}`));
 
 				// Start piping video after the download has begun
 				response.send(stream);
