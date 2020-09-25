@@ -1,4 +1,4 @@
-import {Button, Checkbox, Grid, Link, TextField, Typography, useTheme, Fade} from '@material-ui/core';
+import {Button, Checkbox, Grid, Link, TextField, Typography, useTheme} from '@material-ui/core';
 import React, {ChangeEvent, useState} from 'react';
 import Seo from '../components/seo';
 import {downloadUrl} from '../config/api';
@@ -9,7 +9,6 @@ import woah from '../woah.module.css';
 // Export const config = {amp: 'hybrid'};
 
 const animations = false;
-const now = new Date();
 
 /**
  * Home page.
@@ -88,13 +87,6 @@ const Home: React.FC = () => {
 				<Link className={animations ? woah.simpleEntrance : undefined} href='https://jonah.pw' color='textPrimary'>
 					<Typography paragraph>(by jonah)</Typography>
 				</Link>
-
-				<Fade in={audioOnly}>
-					<Typography paragraph color='textSecondary'>
-						want an mp3? too bad, you get an m4a, a {now.getFullYear() - 2001} year old file format<br></br>
-						if your computer can't handle it you are simply an idiot
-					</Typography>
-				</Fade>
 
 				<Typography color='textSecondary' className={animations ? woah.flyIn : undefined}>
 					inspect network traffic to learn how to use my (public) api (look for fetch requests to <code>/api</code>)
