@@ -27,15 +27,15 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 		downloadType = 'audio';
 	}
 
-	return new Promise(async (resolve, reject) => {
-		try {
-			const videoInfo = await getInfo(video);
+	try {
+		const videoInfo = await getInfo(video);
 
-			const stream = downloadFromInfo(videoInfo, {
-				filter: downloadType === 'video' ? 'audioandvideo' : 'audioonly',
-				quality: downloadType === 'video' ? 'highest' : 'highestaudio'
-			});
+		const stream = downloadFromInfo(videoInfo, {
+			filter: downloadType === 'video' ? 'audioandvideo' : 'audioonly',
+			quality: downloadType === 'video' ? 'highest' : 'highestaudio'
+		});
 
+		return await new Promise(resolve => {
 			stream
 				.once(
 					'progress',
@@ -68,10 +68,10 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 
 					response.write(chunk);
 				});
-		} catch (error) {
-			handleError(error, response);
-		}
-	});
+		});
+	} catch (error) {
+		handleError(error, response);
+	}
 };
 
 export default downloadVideo;
