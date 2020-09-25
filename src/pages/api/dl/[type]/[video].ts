@@ -4,6 +4,7 @@ import {downloadFromInfo, getInfo, validateID, validateURL} from 'ytdl-core';
 import FileType from 'file-type';
 
 const handleError = (error: Error, response: NextApiResponse) => {
+	console.error(error);
 	response.status(500);
 	response.send(['An error occurred while downloading the video:', error.message].join('\n'));
 	response.end();
@@ -26,42 +27,51 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 		downloadType = 'audio';
 	}
 
-	try {
-		const videoInfo = await getInfo(video);
+	return new Promise(async (resolve, reject) => {
+		try {
+			const videoInfo = await getInfo(video);
 
-		const stream = downloadFromInfo(videoInfo, {
-			filter: downloadType === 'video' ? 'audioandvideo' : 'audioonly',
-			quality: downloadType === 'video' ? 'highest' : 'highestaudio'
-		});
-
-		const fileType = await FileType.fromStream(stream);
-		const extension = fileType?.ext ?? (downloadType === 'audio' ? 'webm' : 'mp4');
-
-		stream
-			.once(
-				'progress',
-				/**
-				 * Emitted whenever a new chunk is received. Passes values describing the download progress.
-				 * @param chunkLength Chunk length in bytes or segment number.
-				 * @param totalBytesDownloaded Total bytes or segments downloaded.
-				 * @param totalBytes Total bytes or segments.
-				 */
-				(chunkLength: number, totalBytesDownloaded: number, totalBytes: number) => {
-					response.setHeader('Content-length', totalBytes);
-				}
-			)
-			.on('error', error => {
-				handleError(error, response);
-			})
-			.once('pipe', () => {
-				response.setHeader('Content-Disposition', contentDisposition(`${videoInfo.videoDetails.title ?? 'video'}.${extension}`));
-
-				// Start piping video after the download has begun
-				response.send(stream);
+			const stream = downloadFromInfo(videoInfo, {
+				filter: downloadType === 'video' ? 'audioandvideo' : 'audioonly',
+				quality: downloadType === 'video' ? 'highest' : 'highestaudio'
 			});
-	} catch (error) {
-		handleError(error, response);
-	}
+
+			stream
+				.once(
+					'progress',
+					/**
+					 * Emitted whenever a new chunk is received. Passes values describing the download progress.
+					 * @param chunkLength Chunk length in bytes or segment number.
+					 * @param totalBytesDownloaded Total bytes or segments downloaded.
+					 * @param totalBytes Total bytes or segments.
+					 */
+					(chunkLength: number, totalBytesDownloaded: number, totalBytes: number) => {
+						response.setHeader('Content-length', totalBytes);
+					}
+				)
+				.on('error', error => {
+					throw error;
+				})
+				.on('readable', async () => {
+					const chunk = stream.read();
+
+					if (chunk === null) {
+						return resolve();
+					}
+
+					if (!response.headersSent) {
+						const fileType = await FileType.fromBuffer(chunk);
+						const fileExtension = fileType?.ext ?? (downloadType === 'audio' ? 'webm' : 'mp4');
+
+						response.setHeader('Content-Disposition', contentDisposition(`${videoInfo.videoDetails.title ?? 'video'}.${fileExtension}`));
+					}
+
+					response.write(chunk);
+				});
+		} catch (error) {
+			handleError(error, response);
+		}
+	});
 };
 
 export default downloadVideo;
