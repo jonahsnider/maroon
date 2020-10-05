@@ -9,7 +9,7 @@
 		"@material-ui/core": "4.11.0",
 		"@material-ui/icons": "4.9.1",
 		"@types/node": "12.12.62",
-		"@types/react": "16.9.50",
+		"@types/react": "16.9.51",
 		"file-type": "15.0.1",
 		"firebase": "7.22.1",
 		"next": "9.5.3",
