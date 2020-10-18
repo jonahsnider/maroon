@@ -1,6 +1,6 @@
 import {Theme} from '@material-ui/core';
 import Head from 'next/head';
-import React from 'react';
+import React, {FC} from 'react';
 import {siteMetadata} from '../config/site-metadata';
 
 export function generateFullTitle(pageTitle: string): string {
@@ -14,7 +14,7 @@ export function generateFullTitle(pageTitle: string): string {
 /**
  * A collection of SEO tags that use values from a site-wide or page specific config.
  */
-const Seo = (props: Readonly<{theme: Theme; pageTitle: string}>): JSX.Element => {
+const Seo: FC<{theme: Theme; pageTitle: string}> = props => {
 	const fullTitle = generateFullTitle(props.pageTitle);
 
 	return (

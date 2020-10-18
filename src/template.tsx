@@ -2,15 +2,11 @@ import {Container, createMuiTheme, CssBaseline, Fab, Grid, responsiveFontSizes, 
 import {FlashOnRounded} from '@material-ui/icons';
 import {useAmp} from 'next/amp';
 import Link from 'next/link';
-import React, {useMemo} from 'react';
+import React, {FC, useMemo} from 'react';
 import Seo from './components/seo';
 import {siteMetadata} from './config/site-metadata';
 
-export const MaroonTemplate = (
-	props: Readonly<{
-		children: JSX.Element[] | JSX.Element;
-	}>
-): JSX.Element => {
+export const MaroonTemplate: FC = props => {
 	const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 	const isAMP = useAmp();
 

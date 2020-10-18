@@ -11,7 +11,7 @@ export default class MyApp extends App {
 		import('../util/firebase').catch(error => console.error(['An error occurred while importing the Firebase util:', error].join('\n')));
 	}
 
-	render(): JSX.Element {
+	render() {
 		const {Component, pageProps} = this.props;
 
 		return (

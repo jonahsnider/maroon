@@ -69,8 +69,8 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 					response.write(chunk);
 				});
 		});
-	} catch (error) {
-		handleError(error, response);
+	} catch (error: unknown) {
+		handleError(error instanceof Error ? error : new Error(String(error)), response);
 	}
 };
 
