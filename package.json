@@ -18,7 +18,7 @@
 		"react": "17.0.1",
 		"react-dom": "17.0.1",
 		"typescript": "4.1.2",
-		"ytdl-core": "4.1.6"
+		"ytdl-core": "4.1.7"
 	},
 	"devDependencies": {
 		"eslint-config-xo-react": "0.23.0",
