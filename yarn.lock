@@ -8954,10 +8954,10 @@ yargs-parser@^20.2.3:
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.4.tgz#b42890f14566796f85ae8e3a25290d205f154a54"
   integrity sha512-WOkpgNhPTlE73h4VFAFsOnomJVaovO8VqLDzy5saChRBFQFBoMYirowyW+Q9HB4HFF4Z7VZTiG3iSzJJA29yRA==
 
-ytdl-core@4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-4.2.0.tgz#911c4a997c422ec12a5174e05e97008496948f99"
-  integrity sha512-DYXdooKcok4yuAHg6YdcSppGBWleBQ5nwxFDXArLv3Iiu0GcsfDQdJEjz2zm0oHA292mMyaRb17EYGdcU8D3hw==
+ytdl-core@4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/ytdl-core/-/ytdl-core-4.2.1.tgz#afcc1577a2a35701a5e1369f2ad3b0d1a7d2419d"
+  integrity sha512-7zAoJiWpaBGgiAUCQuvKBuWom7tmSCV0A70gRdrPxR96yQoJOrCZkW6Wg1CofvPtAeQVWTVWThC8bXRsE+SBeA==
   dependencies:
     m3u8stream "^0.8.3"
     miniget "^4.0.0"
