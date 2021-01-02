@@ -37,7 +37,7 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 			quality: downloadType === 'video' ? 'highest' : 'highestaudio'
 		});
 
-		await new Promise(resolve => {
+		await new Promise<void>(resolve => {
 			stream
 				.once(
 					'progress',
