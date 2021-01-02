@@ -26,6 +26,8 @@ firebase.analytics
 			firebase.analytics();
 		}
 	})
-	.catch(error => console.error("Firebase Analytics couldn't initialize", error));
+	.catch(error => {
+		console.error("Firebase Analytics couldn't initialize", error);
+	});
 
 export default firebaseApp;
