@@ -14,11 +14,13 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 	const {video, type} = request.query;
 
 	if (video === undefined) {
-		return response.status(422).send('No URL');
+		response.status(422).send('No URL');
+		return;
 	}
 
 	if (typeof video !== 'string' || (!validateURL(video) && !validateID(video))) {
-		return response.status(422).send('Invalid URL');
+		response.status(422).send('Invalid URL');
+		return;
 	}
 
 	let downloadType: 'video' | 'audio' = 'video';
@@ -35,7 +37,7 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 			quality: downloadType === 'video' ? 'highest' : 'highestaudio'
 		});
 
-		return await new Promise(resolve => {
+		await new Promise(resolve => {
 			stream
 				.once(
 					'progress',
@@ -56,7 +58,8 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 					const chunk = stream.read();
 
 					if (chunk === null) {
-						return resolve();
+						resolve();
+						return;
 					}
 
 					if (!response.headersSent) {
@@ -69,6 +72,7 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 					response.write(chunk);
 				});
 		});
+		return;
 	} catch (error: unknown) {
 		handleError(error instanceof Error ? error : new Error(String(error)), response);
 	}

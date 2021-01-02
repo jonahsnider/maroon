@@ -10,18 +10,19 @@ const validateVideo = async (request: NextApiRequest, response: NextApiResponse)
 	if (typeof video !== 'string') {
 		response.status(422);
 		response.send('Invalid video, expected string');
-		return response.end();
+		response.end();
+		return;
 	}
 
 	return getBasicInfo(video)
 		.then(() => {
 			response.status(204);
-			return response.end();
+			response.end();
 		})
 		.catch((error: Error) => {
 			response.status(400);
 			response.send(error.message);
-			return response.end();
+			response.end();
 		});
 };
 

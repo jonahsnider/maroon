@@ -38,7 +38,9 @@ const Home: React.FC = () => {
 		setPendingValidation(false);
 	};
 
-	const handleAudioOnlyChange = (event: ChangeEvent<HTMLInputElement>) => setAudioOnly(event.target.checked);
+	const handleAudioOnlyChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setAudioOnly(event.target.checked);
+	};
 
 	return (
 		<>
