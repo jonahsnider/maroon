@@ -12,7 +12,7 @@
 		"@types/react": "17.0.1",
 		"file-type": "16.2.0",
 		"firebase": "8.2.6",
-		"next": "10.0.5",
+		"next": "10.0.6",
 		"next-compose-plugins": "2.2.1",
 		"next-pwa": "5.0.5",
 		"react": "17.0.1",
@@ -26,6 +26,7 @@
 		"eslint-plugin-react": "7.22.0",
 		"eslint-plugin-react-hooks": "4.2.0",
 		"prettier": "2.2.1",
+		"webpack": "^4.46.0",
 		"xo": "0.37.1"
 	},
 	"homepage": "https://maroon.jonah.pw",
