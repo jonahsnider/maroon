@@ -1,4 +1,4 @@
-FROM node:12.20.2-alpine AS builder
+FROM node:12.21.0-alpine AS builder
 
 WORKDIR /usr/src/builder
 
@@ -15,7 +15,7 @@ RUN ["yarn", "install", "--production=true"]
 
 RUN ["yarn", "build"]
 
-FROM node:12.20.2-alpine AS app
+FROM node:12.21.0-alpine AS app
 WORKDIR /usr/src/maroon
 
 COPY package.json ./
