@@ -11,7 +11,7 @@
 		"@types/node": "12.20.7",
 		"@types/react": "17.0.3",
 		"file-type": "16.3.0",
-		"firebase": "8.3.1",
+		"firebase": "8.3.2",
 		"next": "10.1.2",
 		"next-compose-plugins": "2.2.1",
 		"next-pwa": "5.0.6",
