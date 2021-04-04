@@ -21,7 +21,7 @@
 		"ytdl-core": "4.5.0"
 	},
 	"devDependencies": {
-		"eslint-config-xo-react": "0.24.0",
+		"eslint-config-xo-react": "0.25.0",
 		"eslint-plugin-prettier": "3.3.1",
 		"eslint-plugin-react": "7.23.1",
 		"eslint-plugin-react-hooks": "4.2.0",
