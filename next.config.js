@@ -11,5 +11,6 @@ module.exports = withPlugins([
 				dest: 'public'
 			}
 		}
-	]
+	],
+	{future: {webpack5: true}}
 ]);
