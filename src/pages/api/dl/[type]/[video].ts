@@ -55,7 +55,7 @@ const downloadVideo = async (request: NextApiRequest, response: NextApiResponse)
 					throw error;
 				})
 				.on('readable', async () => {
-					const chunk = stream.read();
+					const chunk: Buffer | null = stream.read();
 
 					if (chunk === null) {
 						resolve();
