@@ -26,7 +26,7 @@
 		"eslint-plugin-react": "7.23.2",
 		"eslint-plugin-react-hooks": "4.2.0",
 		"prettier": "2.2.1",
-		"xo": "0.38.2"
+		"xo": "0.39.1"
 	},
 	"homepage": "https://maroon.jonah.pw",
 	"name": "maroon",
@@ -45,7 +45,6 @@
 	"xo": {
 		"extends": [
 			"xo",
-			"xo/esnext",
 			"xo/browser",
 			"xo-react"
 		],
