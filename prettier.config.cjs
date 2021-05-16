@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/prefer-module */
+
 module.exports = {
 	arrowParens: 'avoid',
 	bracketSpacing: false,

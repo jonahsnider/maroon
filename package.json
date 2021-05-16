@@ -55,6 +55,7 @@
 				],
 				"files": [
 					"*.config.js",
+					"*.cjs",
 					"src/config.ts",
 					"src/pages/api/*"
 				]
