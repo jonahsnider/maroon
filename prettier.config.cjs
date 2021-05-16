@@ -1,16 +1,6 @@
 /* eslint-disable unicorn/prefer-module */
 
 module.exports = {
-	arrowParens: 'avoid',
-	bracketSpacing: false,
-	endOfLine: 'lf',
-	jsxBracketSameLine: false,
-	jsxSingleQuote: true,
-	printWidth: 160,
-	quoteProps: 'as-needed',
-	semi: true,
-	singleQuote: true,
-	tabWidth: 2,
-	trailingComma: 'none',
-	useTabs: true
+	...require('prettier-config-xo'),
+	printWidth: 160
 };
