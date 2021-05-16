@@ -1,6 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import firebase from 'firebase/app';
 import 'firebase/performance';
 import 'firebase/analytics';
+/* eslint-enable import/no-extraneous-dependencies */
 
 export const firebaseConfig = {
 	apiKey: 'AIzaSyDSVQuKbk94g-uBqksUKAuaBoaDwI7gPiM',

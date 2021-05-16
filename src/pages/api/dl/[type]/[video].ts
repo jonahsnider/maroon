@@ -56,7 +56,7 @@ export default async function downloadVideo(request: NextApiRequest, response: N
 				})
 				.on('readable', async () => {
 					// eslint-disable-next-line no-undef
-					const chunk: Buffer | null = stream.read();
+					const chunk = stream.read() as Buffer | null;
 
 					if (chunk === null) {
 						resolve();
