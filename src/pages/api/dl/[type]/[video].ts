@@ -34,7 +34,7 @@ export default async function downloadVideo(request: NextApiRequest, response: N
 
 		const stream = downloadFromInfo(videoInfo, {
 			filter: downloadType === 'video' ? 'audioandvideo' : 'audioonly',
-			quality: downloadType === 'video' ? 'highest' : 'highestaudio'
+			quality: downloadType === 'video' ? 'highest' : 'highestaudio',
 		});
 
 		await new Promise<void>(resolve => {
@@ -49,7 +49,7 @@ export default async function downloadVideo(request: NextApiRequest, response: N
 					 */
 					(chunkLength: number, totalBytesDownloaded: number, totalBytes: number) => {
 						response.setHeader('Content-length', totalBytes);
-					}
+					},
 				)
 				.on('error', error => {
 					throw error;

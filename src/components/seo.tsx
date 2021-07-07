@@ -49,7 +49,7 @@ const Seo: FC<{theme: Theme; pageTitle: string}> = props => {
 					type='image/png'
 					sizes={`${dimension}x${dimension}`}
 					href={`${siteMetadata.url}/images/icon-${dimension}.png`}
-				/>
+				/>,
 			])}
 
 			<link key='apple-touch-startup-image' rel='apple-touch-startup-image' href={`${siteMetadata.url}/images/icon-512.png`} />

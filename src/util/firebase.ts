@@ -12,7 +12,7 @@ export const firebaseConfig = {
 	storageBucket: 'maroon-node.appspot.com',
 	messagingSenderId: '777436616784',
 	appId: '1:777436616784:web:b61005b6d11e65c3ffd955',
-	measurementId: 'G-FGVVCP54FS'
+	measurementId: 'G-FGVVCP54FS',
 };
 
 // Only keep a single app initialized
