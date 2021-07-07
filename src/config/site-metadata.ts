@@ -6,8 +6,8 @@ export const siteMetadata = {
 	title: 'maroon',
 	i18n: {
 		language: 'EN',
-		locale: 'en_US'
+		locale: 'en_US',
 	},
 	description: 'download youtube videos, really easily',
-	url: baseUrl
+	url: baseUrl,
 };

@@ -16,9 +16,9 @@ export const MaroonTemplate: FC = props => {
 				spacing: 12,
 				palette: {
 					type: prefersDarkMode ? 'dark' : 'light',
-					primary: {main: colors.red['900']}
-				}
-			})
+					primary: {main: colors.red['900']},
+				},
+			}),
 		);
 	}, [prefersDarkMode]);
 
