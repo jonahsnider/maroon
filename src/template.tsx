@@ -1,4 +1,4 @@
-import {colors, Container, createTheme,  CssBaseline, Fab, Grid, responsiveFontSizes, ThemeProvider, useMediaQuery} from '@material-ui/core';
+import {colors, Container, createTheme, CssBaseline, Fab, Grid, responsiveFontSizes, ThemeProvider, useMediaQuery} from '@material-ui/core';
 import {FlashOnRounded} from '@material-ui/icons';
 import {useAmp} from 'next/amp';
 import Link from 'next/link';

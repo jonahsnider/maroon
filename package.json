@@ -48,7 +48,9 @@
 			"xo/browser",
 			"xo-react"
 		],
-		"ignore": ["./next-env.d.ts"],
+		"ignore": [
+			"./next-env.d.ts"
+		],
 		"overrides": [
 			{
 				"extends": [
