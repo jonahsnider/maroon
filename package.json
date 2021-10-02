@@ -8,7 +8,7 @@
 		"@lazy-http/content-disposition": "1.0.2",
 		"@material-ui/core": "4.12.3",
 		"@material-ui/icons": "4.11.2",
-		"@types/node": "14.17.20",
+		"@types/node": "16.10.2",
 		"@types/react": "17.0.26",
 		"file-type": "16.5.3",
 		"firebase": "8.10.0",
@@ -48,6 +48,7 @@
 			"xo/browser",
 			"xo-react"
 		],
+		"ignore": ["./next-env.d.ts"],
 		"overrides": [
 			{
 				"extends": [
@@ -73,7 +74,8 @@
 				}
 			],
 			"react/no-unescaped-entities": "off",
-			"react/prop-types": "off"
+			"react/prop-types": "off",
+			"unicorn/prefer-node-protocol": "off"
 		}
 	}
 }

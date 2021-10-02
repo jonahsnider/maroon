@@ -14,6 +14,7 @@ export function generateFullTitle(pageTitle: string): string {
 /**
  * A collection of SEO tags that use values from a site-wide or page specific config.
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const Seo: FC<{theme: Theme; pageTitle: string}> = props => {
 	const fullTitle = generateFullTitle(props.pageTitle);
 

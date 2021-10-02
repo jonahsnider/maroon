@@ -14,7 +14,7 @@ export default class MyApp extends App {
 	}
 
 	render() {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/naming-convention
 		const {Component, pageProps} = this.props;
 
 		return (

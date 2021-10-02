@@ -3,7 +3,7 @@ import React, {ChangeEvent, useState} from 'react';
 import Seo from '../components/seo';
 import {downloadUrl} from '../config/api';
 import {checkVideo} from '../util/validate';
-import {getVideoID} from '../util/yt';
+import {getVideoId} from '../util/yt';
 import woah from '../woah.module.css';
 
 // Export const config = {amp: 'hybrid'};
@@ -13,6 +13,7 @@ const animations = false;
 /**
  * Home page.
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const Home: React.FC = () => {
 	const theme = useTheme();
 
@@ -25,7 +26,7 @@ const Home: React.FC = () => {
 
 	if (errorMessage === null) {
 		try {
-			videoDownloadUrl = [downloadUrl, 'dl', audioOnly ? 'audio' : 'video', getVideoID(url)].join('/');
+			videoDownloadUrl = [downloadUrl, 'dl', audioOnly ? 'audio' : 'video', getVideoId(url)].join('/');
 		} catch {}
 	}
 
