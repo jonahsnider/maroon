@@ -17,16 +17,16 @@
 		"next-pwa": "5.3.1",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
-		"typescript": "4.2.4",
+		"typescript": "4.4.3",
 		"ytdl-core": "4.9.1"
 	},
 	"devDependencies": {
 		"eslint-config-xo-react": "0.25.0",
 		"eslint-plugin-react": "7.26.1",
 		"eslint-plugin-react-hooks": "4.2.0",
-		"prettier": "2.3.0",
+		"prettier": "2.4.1",
 		"prettier-config-xo": "2.0.0",
-		"xo": "0.40.3"
+		"xo": "0.45.0"
 	},
 	"homepage": "https://maroon.jonah.pw",
 	"name": "maroon",
