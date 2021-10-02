@@ -8,6 +8,7 @@ import Seo from '../components/seo';
 /**
  * 404 page not found page.
  */
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const NotFoundPage: FC = () => {
 	const theme = useTheme();
 	return (

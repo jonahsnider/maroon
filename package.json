@@ -8,7 +8,7 @@
 		"@lazy-http/content-disposition": "1.0.2",
 		"@material-ui/core": "4.12.3",
 		"@material-ui/icons": "4.11.2",
-		"@types/node": "14.17.20",
+		"@types/node": "16.10.2",
 		"@types/react": "17.0.26",
 		"file-type": "16.5.3",
 		"firebase": "8.10.0",
@@ -17,16 +17,16 @@
 		"next-pwa": "5.3.1",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
-		"typescript": "4.2.4",
+		"typescript": "4.4.3",
 		"ytdl-core": "4.9.1"
 	},
 	"devDependencies": {
 		"eslint-config-xo-react": "0.25.0",
 		"eslint-plugin-react": "7.26.1",
 		"eslint-plugin-react-hooks": "4.2.0",
-		"prettier": "2.3.0",
+		"prettier": "2.4.1",
 		"prettier-config-xo": "2.0.0",
-		"xo": "0.40.3"
+		"xo": "0.45.0"
 	},
 	"homepage": "https://maroon.jonah.pw",
 	"name": "maroon",
@@ -47,6 +47,9 @@
 			"xo",
 			"xo/browser",
 			"xo-react"
+		],
+		"ignore": [
+			"./next-env.d.ts"
 		],
 		"overrides": [
 			{
@@ -73,7 +76,8 @@
 				}
 			],
 			"react/no-unescaped-entities": "off",
-			"react/prop-types": "off"
+			"react/prop-types": "off",
+			"unicorn/prefer-node-protocol": "off"
 		}
 	}
 }

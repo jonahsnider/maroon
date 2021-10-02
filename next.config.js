@@ -1,5 +1,6 @@
 /* eslint-disable unicorn/prefer-module */
 
+const process = require('process');
 const withPlugins = require('next-compose-plugins');
 const withPWA = require('next-pwa');
 

@@ -1,5 +1,5 @@
 import {downloadUrl} from '../config/api';
-import {getVideoID, validateURL} from './yt';
+import {getVideoId, validateUrl} from './yt';
 
 /**
  * Check if a video URL is good to download.
@@ -7,12 +7,12 @@ import {getVideoID, validateURL} from './yt';
  * @returns The human-readable error message, or `null` if everything is fine
  */
 export async function checkVideo(video: string): Promise<string | null> {
-	if (!validateURL(video)) {
+	if (!validateUrl(video)) {
 		return 'invalid video url';
 	}
 
 	try {
-		const response = await fetch(`${downloadUrl}/validate/${getVideoID(video)}`);
+		const response = await fetch(`${downloadUrl}/validate/${getVideoId(video)}`);
 		if (!response.ok) {
 			return 'the server says that video is maybe not exist???';
 		}

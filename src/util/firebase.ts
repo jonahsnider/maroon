@@ -1,10 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import firebase from 'firebase/app';
 import 'firebase/performance';
 import 'firebase/analytics';
-/* eslint-enable import/no-extraneous-dependencies */
 
 export const firebaseConfig = {
+	/* eslint-disable @typescript-eslint/naming-convention */
 	apiKey: 'AIzaSyDSVQuKbk94g-uBqksUKAuaBoaDwI7gPiM',
 	authDomain: 'maroon-node.firebaseapp.com',
 	databaseURL: 'https://maroon-node.firebaseio.com',
@@ -13,6 +12,7 @@ export const firebaseConfig = {
 	messagingSenderId: '777436616784',
 	appId: '1:777436616784:web:b61005b6d11e65c3ffd955',
 	measurementId: 'G-FGVVCP54FS',
+	/* eslint-enable @typescript-eslint/naming-convention */
 };
 
 // Only keep a single app initialized

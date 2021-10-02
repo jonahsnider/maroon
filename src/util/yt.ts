@@ -10,11 +10,11 @@ const idRegex = /^[\w-]{11}$/i;
  * @param id
  * @return
  */
-export function validateID(id: string): boolean {
+export function validateId(id: string): boolean {
 	return idRegex.test(id);
 }
 
-export function getURLVideoID(link: string): string {
+export function getUrlVideoId(link: string): string {
 	const parsed = new URL(link);
 	let id = parsed.searchParams.get('v');
 	if (validPathDomains.test(link) && id === null) {
@@ -29,7 +29,7 @@ export function getURLVideoID(link: string): string {
 	}
 
 	id = id.slice(0, 11);
-	if (!validateID(id)) {
+	if (!validateId(id)) {
 		throw new TypeError(`Video id (${id}) does not match expected format (${idRegex.toString()})`);
 	}
 
@@ -40,7 +40,7 @@ export function getURLVideoID(link: string): string {
  * @param link The link to use
  * @returns `true` if the link was valid
  */
-export function validateURL(link: string): boolean {
+export function validateUrl(link: string): boolean {
 	let parsed;
 	try {
 		parsed = new URL(link);
@@ -69,10 +69,10 @@ export function validateURL(link: string): boolean {
  * Get a video ID from a string.
  * @param string String to get the video ID from
  */
-export function getVideoID(string: string): string {
-	if (validateID(string)) {
+export function getVideoId(string: string): string {
+	if (validateId(string)) {
 		return string;
 	}
 
-	return getURLVideoID(string);
+	return getUrlVideoId(string);
 }
