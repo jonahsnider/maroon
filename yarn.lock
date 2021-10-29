@@ -6652,10 +6652,10 @@ xmlhttprequest@1.8.0:
   resolved "https://registry.yarnpkg.com/xmlhttprequest/-/xmlhttprequest-1.8.0.tgz#67fe075c5c24fef39f9d65f5f7b7fe75171968fc"
   integrity sha1-Z/4HXFwk/vOfnWX197f+dRcZaPw=
 
-xo@0.46.0:
-  version "0.46.0"
-  resolved "https://registry.yarnpkg.com/xo/-/xo-0.46.0.tgz#6b2113b2e6ec8ac2d814a12108bff882212809b7"
-  integrity sha512-O57z234B0L9jKkD20eEun9dvotK/0VkzJmkj1PDRil630X20q+veDDHwP7XYe214RjoKFkvNMJimWpj0stmfBA==
+xo@0.46.3:
+  version "0.46.3"
+  resolved "https://registry.yarnpkg.com/xo/-/xo-0.46.3.tgz#59273da10ca9359f8af39436c1da0ef065e76779"
+  integrity sha512-olSo9EQhwbBWgAtSC8ixRMLif6T/N3Axs51hgo/VVMVRSEDSmm+lo0OmECYkTtUhUbdkHBAkNc1pC38o8Stf8g==
   dependencies:
     "@eslint/eslintrc" "^1.0.3"
     "@typescript-eslint/eslint-plugin" "*"
