@@ -24,7 +24,7 @@
 		"eslint-config-xo-react": "0.25.0",
 		"eslint-plugin-react": "7.27.1",
 		"eslint-plugin-react-hooks": "4.2.0",
-		"prettier": "2.5.0",
+		"prettier": "2.5.1",
 		"prettier-config-xo": "2.0.0",
 		"xo": "0.46.4"
 	},
