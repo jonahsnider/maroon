@@ -21,12 +21,12 @@
 		"ytdl-core": "4.10.1"
 	},
 	"devDependencies": {
-		"eslint-config-xo-react": "0.25.0",
+		"eslint-config-xo-react": "0.26.0",
 		"eslint-plugin-react": "7.28.0",
 		"eslint-plugin-react-hooks": "4.3.0",
 		"prettier": "2.5.1",
 		"prettier-config-xo": "2.0.0",
-		"xo": "0.46.4"
+		"xo": "0.48.0"
 	},
 	"homepage": "https://maroon.jonah.pw",
 	"name": "maroon",
